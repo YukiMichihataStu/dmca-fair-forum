@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAHAKU사의 DMCA 남용으로 정당한 비판까지 사라지는 문제</title>
+<meta name="description" content="비판 게시물이 삭제 신청만으로 사라지는 문제와, 양쪽이 이유를 밝힌 뒤에 결정하는 사이트 구상.">
+<link rel="alternate" hreflang="ja" href="https://yukimichihatastu.github.io/dmca-fair-forum/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://yukimichihatastu.github.io/dmca-fair-forum/zh-tw/">
+<link rel="alternate" hreflang="ko" href="https://yukimichihatastu.github.io/dmca-fair-forum/ko/">
+<link rel="alternate" hreflang="de" href="https://yukimichihatastu.github.io/dmca-fair-forum/de/">
+
+<style>
+:root{
+  --ink:#222222; --sub:#6b6b6b; --line:#e6e6e6; --paper:#ffffff;
+  --red:#c8402f; --red-bg:#fdecea;
+  --green:#1f7a5c; --green-bg:#e3f4ec;
+  --mark-y:#fff1a8; --mark-g:#d6f0e3;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  font-size:17px;line-height:1.9;letter-spacing:0}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.topbar>div{max-width:640px;margin:0 auto;padding:0 20px;height:40px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1}
+.topbar select{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;max-width:7.5em;cursor:pointer}
+.topbar .acts{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:4px}
+.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-decoration-color:#b5b5b5;text-underline-offset:4px}
+.topbar a:focus-visible,.topbar button:focus-visible,.topbar select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+h2,h3{scroll-margin-top:56px}
+.wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
+h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
+h2{font-size:24px;line-height:1.5;font-weight:700;margin:96px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+h3{font-size:19px;line-height:1.6;font-weight:700;margin:56px 0 14px;padding-left:12px;border-left:5px solid var(--ink)}
+p{margin:0 0 1.5em}
+a{color:inherit;text-decoration-color:#b5b5b5;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+mark{color:inherit;padding:0 .08em;background:linear-gradient(transparent 58%,var(--mark-y) 58%)}
+mark.g{background:linear-gradient(transparent 58%,var(--mark-g) 58%)}
+.toc{font-size:14.5px;color:var(--sub);margin:0 0 8px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px}
+.src{font-size:13px;color:var(--sub);margin-top:-.9em}
+.view{border-left:3px solid var(--line);padding-left:16px;color:#444}
+figure{margin:32px 0 36px}
+figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+.fignote{font-size:13px;color:var(--sub);margin:12px 0 0}
+
+/* 手順の流れ */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:22px}
+.flow li{position:relative;border-top:3px solid #cfcfcf;padding-top:10px;font-size:13.5px;line-height:1.65;color:#444}
+.flow li b{display:block;font-size:15.5px;color:var(--ink);margin-bottom:2px}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:-8px;right:-17px;width:0;height:0;border-style:solid;border-width:6.5px 0 6.5px 10px;border-color:transparent transparent transparent #8a8a8a}
+.flow li.bad{border-top-color:var(--red)} .flow li.bad b{color:var(--red)}
+.flow li.good{border-top-color:var(--green)} .flow li.good b{color:var(--green)}
+
+/* 二つの負担 */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pair div{font-size:15px;line-height:1.8}
+.pair svg{display:block;margin-bottom:8px}
+.pair b{display:block;font-size:16px;margin-bottom:2px}
+
+/* 図（SVG） */
+.diagram{display:block;width:100%;max-width:440px;margin:0 auto;height:auto}
+.diagram text{font-family:inherit}
+
+/* 三者 */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
+.roles h4{font-size:16px;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.roles dl{margin:0;font-size:14px;line-height:1.7}
+.roles dt{color:var(--sub);font-size:12.5px;margin-top:8px}
+.roles dd{margin:0}
+
+/* 決まりの一覧 */
+.rules{margin:0 0 1.5em;padding-left:1.4em}
+.rules li{margin-bottom:.35em}
+
+/* リスク */
+.risks{margin:0}
+.risks dt{font-weight:700;margin-top:18px}
+.risks dd{margin:2px 0 0;padding-left:16px;border-left:3px solid var(--green-bg);color:#444}
+
+.open{padding-left:1.2em;margin:0 0 1.5em}
+.open li{margin-bottom:.9em}
+.open b{display:block}
+.xpost{margin:8px 0 28px}
+.xpost .twitter-tweet{margin:0 auto}
+.xlink{font-size:14px}
+footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);line-height:1.8}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:32px 18px 72px}
+  .topbar>div{padding:0 18px;font-size:12.5px;gap:8px}
+  .topbar .acts{gap:12px}
+  h1{font-size:25px} h2{font-size:21.5px;margin-top:72px} h3{font-size:17.5px;margin-top:46px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow li{border-top:0;border-left:3px solid #cfcfcf;padding:0 0 6px 16px;margin-bottom:26px;font-size:14px}
+  .flow li:last-child{margin-bottom:0}
+  .flow li.bad{border-left-color:var(--red)} .flow li.good{border-left-color:var(--green)}
+  .flow li:not(:last-child)::after{top:auto;bottom:-17px;left:-8px;right:auto;border-width:11px 6.5px 0 6.5px;border-color:#8a8a8a transparent transparent transparent}
+  .pair{grid-template-columns:1fr;gap:22px}
+  .roles{grid-template-columns:1fr;gap:20px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="person" viewBox="0 0 40 40"><circle cx="20" cy="13" r="7"/><path d="M6 38c0-10 6-15 14-15s14 5 14 15z"/></symbol>
+</svg>
+<header class="topbar"><div>
+  <select id="lang" aria-label="언어"><option value=".././">日本語</option><option value="../zh-tw/">繁體中文</option><option value="../ko/" selected>한국어</option><option value="../de/">Deutsch</option></select>
+  <span class="acts">
+    <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">의견은 Issue로</a>
+    <button type="button" id="share" data-done="링크를 복사했습니다">공유</button>
+  </span>
+</div></header>
+
+<main class="wrap">
+  <h1>GAHAKU사의 DMCA 남용으로 정당한 비판까지 사라지는 문제</h1>
+  <ul class="toc">
+    <li><a href="#now">지금 일어나고 있는 일</a></li>
+    <li><a href="#why">게시물이 삭제되는 이유</a></li>
+    <li><a href="#plan">구상하고 있는 사이트</a></li>
+    <li><a href="#open">아직 정해지지 않은 것</a></li>
+  </ul>
+
+  <h2 id="now">지금 일어나고 있는 일</h2>
+  <p>호리 다이스케(堀大輔) 씨는 '하루 30분 수면'을 공언하며, 일반사단법인 일본 쇼트슬리퍼 육성협회의 대표이사로서 유료 수면 개선 프로그램을 제공하는 사업가입니다. 2026년 8월 이후 SNS에서는 호리 씨의 주장에 의문을 제기하는 목소리가 커졌습니다. 또한 호리 씨의 유튜브 채널 영상에는 GAHAKU사(GAHAKU CO., LTD.)의 저작권 표시가 있습니다.</p>
+  <p class="src">출처: <a href="https://weekly.ascii.jp/elem/000/004/434/4434756/">주간 아스키(2026년 9월 15일)</a></p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="ko" data-dnt="true"><p class="xlink"><a href="https://x.com/hogehogejptweet/status/2099382005985415569">X 게시물 보기（@hogehogejptweet）</a></p></blockquote></div>
+  <p>그러나 호리 씨에 대한 비판은 독자에게 닿기 어려워지고 있습니다. 먼저, 호리 씨의 유튜브 라이브 방송에서는 호리 씨를 비판하는 댓글이 삭제되고 있습니다. 나아가 X에서는 전 수강생 등이 제공한 영상(강좌 본편의 내용이 아닌 것)이나 유튜브 라이브의 편집 영상을 실은 게시물이 삭제되고 있습니다.</p>
+  <p class="view">필자는 이러한 삭제가 비판에 답하지 않고 DMCA를 이용해 정당한 비판을 지우는 행위라고 생각합니다.</p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="ko" data-dnt="true"><p class="xlink"><a href="https://x.com/taugu7711/status/2124442262360735834">X 게시물 보기（@taugu7711）</a></p></blockquote></div>
+
+  <h2 id="why">게시물이 삭제되는 이유</h2>
+  <p>X의 게시물이 신청만으로 사라지는 이유는 두 가지입니다. 첫째는 DMCA의 구조이고, 둘째는 일본에 사는 사람이 이의를 제기할 때 지는 부담입니다.</p>
+
+  <h3>DMCA의 구조</h3>
+  <p>X는 미국 회사이므로 미국의 디지털 밀레니엄 저작권법(DMCA)에 따라 삭제 신청을 처리합니다. DMCA는 신청을 받고 곧바로 삭제한 사업자, 즉 X를 저작권 침해 책임에서 보호하는 법입니다. 그래서 X는 <mark>신청이 옳은지 확인하기 전에 게시물을 삭제합니다</mark>.</p>
+  <figure>
+    <figcaption>X에서 신청부터 삭제, 이의 제기까지의 순서</figcaption>
+    <ol class="flow">
+      <li><b>신청</b>권리자라고 밝힌 사람이 X에 신청한다</li>
+      <li class="bad"><b>삭제</b>X는 신청이 옳은지 확인하기 전에 게시물을 지운다</li>
+      <li><b>이의 제기</b>게시자는 게시물이 사라진 뒤에야 이의를 제기할 수 있다</li>
+      <li><b>복구 또는 소송</b>신청자가 미국에서 소송을 내지 않으면 게시물은 복구된다</li>
+    </ol>
+    <p class="fignote">빨간색 '삭제'는 게시자의 말을 듣기 전에 이루어집니다.</p>
+  </figure>
+  <p>이 구조를 이용해 자신에게 불리한 정보를 삭제시키는 사례가 있으며, 미국 안에서도 문제로 지적되고 있습니다.</p>
+  <p class="src">출처: <a href="https://eff.org/deeplinks/2026/09/court-rules-against-citizen-journalists-dmca-takedown-case-eff-will-appeal">전자프런티어재단(EFF)</a>, <a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h3>일본에 사는 사람의 부담</h3>
+  <p>물론 게시물이 삭제된 사람은 이의를 제기할 수 있습니다. 그러나 일본에 사는 사람은 미국의 절차로 이의를 제기해야 하고, 게다가 삭제를 신청한 사람에게 자신의 이름과 주소를 알려야 합니다.</p>
+  <figure>
+    <div class="pair">
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><rect x="4" y="10" width="40" height="28" fill="none" stroke="#c8402f" stroke-width="2.5"/><circle cx="16" cy="21" r="4.5" fill="#c8402f"/><path d="M8 33c1-6 15-6 16 0z" fill="#c8402f"/><line x1="28" y1="19" x2="40" y2="19" stroke="#c8402f" stroke-width="2.5"/><line x1="28" y1="27" x2="38" y2="27" stroke="#c8402f" stroke-width="2.5"/></svg>
+        <b>이름과 주소가 상대에게 전달된다</b>
+        이의를 제기하는 사람은 자신의 이름과 주소를 적어야 하며, 적은 정보는 삭제를 신청한 사람에게 전달됩니다.
+      </div>
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><path d="M6 18 L24 6 L42 18 z" fill="#c8402f"/><rect x="10" y="21" width="4" height="15" fill="#c8402f"/><rect x="22" y="21" width="4" height="15" fill="#c8402f"/><rect x="34" y="21" width="4" height="15" fill="#c8402f"/><rect x="5" y="38" width="38" height="4" fill="#c8402f"/></svg>
+        <b>미국의 재판에 응해야 한다</b>
+        이의를 제기하는 사람은 미국 법원에서 다투는 데 동의해야 합니다. 신청자가 미국에서 소송을 내면, 대응하는 비용은 개인에게 큰 부담입니다.
+      </div>
+    </div>
+  </figure>
+  <p>이 때문에 게시물이 삭제되어도 이의를 제기하지 않는 사람이 적지 않습니다. 그리고 이의가 나오지 않으면 신청자의 주장이 옳은지는 확인되지 않은 채로 남습니다. 그 결과 <mark>일본에서는 미국보다 더, 삭제를 신청하는 쪽이 유리한 구조가 되어 있습니다</mark>.</p>
+  <p class="src">출처: <a href="https://nlab.itmedia.co.jp/cont/articles/3317243/">네토라보(ねとらぼ)</a>, <a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h2 id="plan">구상하고 있는 사이트</h2>
+  <p>그래서 아직 구상 단계이지만, 다음과 같은 구조가 있다면 공익에 도움이 되지 않을까 하고 필자는 생각합니다.</p>
+
+  <h3>전체 모습</h3>
+  <p>구상하고 있는 사이트는 공익 목적의 검증이나 비판 글을 싣습니다. 그리고 글에 이의가 제기되면 <mark class="g">신청만으로 글을 지우지 않고, 양쪽의 이유를 들은 뒤에 결정합니다</mark>.</p>
+  <figure>
+    <figcaption>구상하고 있는 사이트의 전체 모습</figcaption>
+    <svg class="diagram" viewBox="0 0 360 372" role="img" aria-label="투고자가 글을 싣는다. 비판받는 쪽은 삭제 요청과 반론을 내고, 사이트는 이의를 곧바로 게시하며, 운영자가 이유를 붙여 답한다. 해결되지 않으면 일본 법원이 판단한다.">
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker><marker id="arg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1f7a5c"/></marker></defs>
+      <use href="#person" x="45" y="4" width="34" height="34" fill="#222"/>
+      <text x="62" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">투고자</text>
+      <text x="62" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">내용에 책임을 진다</text>
+      <use href="#person" x="267" y="4" width="34" height="34" fill="#222"/>
+      <text x="284" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">비판받는 쪽</text>
+      <text x="284" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">이의를 낼 수 있다</text>
+
+      <line x1="62" y1="88" x2="62" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="72" y="124" font-size="12" fill="#222">글을 싣는다</text>
+      <line x1="262" y1="88" x2="262" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="252" y="116" text-anchor="end" font-size="12" fill="#222">삭제 요청</text>
+      <text x="252" y="132" text-anchor="end" font-size="12" fill="#222">과 반론</text>
+      <line x1="296" y1="150" x2="296" y2="88" stroke="#1f7a5c" stroke-width="1.5" marker-end="url(#arg)"/>
+      <text x="304" y="124" font-size="12" fill="#1f7a5c">답변</text>
+
+      <rect x="10" y="156" width="340" height="74" rx="6" fill="#e3f4ec"/>
+      <text x="180" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#1f7a5c">구상하고 있는 사이트</text>
+      <text x="180" y="210" text-anchor="middle" font-size="12" fill="#222">이의를 곧바로 게시하고, 이유를 붙여 답한다</text>
+
+      <line x1="180" y1="236" x2="180" y2="290" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="190" y="268" font-size="12" fill="#222">해결되지 않을 때</text>
+      <rect x="40" y="296" width="280" height="66" rx="6" fill="none" stroke="#cfcfcf" stroke-width="1.5"/>
+      <text x="180" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#222">일본 법원</text>
+      <text x="180" y="345" text-anchor="middle" font-size="12" fill="#6b6b6b">글을 남길지 지울지 판단한다</text>
+    </svg>
+  </figure>
+  <p>이 전체 모습은 다음 네 가지 규칙으로 이루어집니다. 아래에서는 이 순서대로 설명합니다.</p>
+  <ol class="rules">
+    <li>이의가 제기되어도 글을 곧바로 지우지 않고, 이의를 신속하게 게시한다</li>
+    <li>게재 내용의 책임은 투고자가 지고, 운영자는 비판받는 쪽에게서 돈을 받지 않는다</li>
+    <li>글을 기한 없이 계속 싣지 않는다</li>
+    <li>운영자는 신원을 밝히고, 일본 법원의 판단에 따른다</li>
+  </ol>
+
+  <h3>규칙 1　글을 곧바로 지우지 않고, 이의를 신속하게 게시한다</h3>
+  <p>구상하고 있는 사이트에서는 삭제 신청이 그대로 삭제로 이어지는 구조를 택하지 않습니다. 그 대신 글을 지울지 결정하기 전에, 이의가 있는 사람과 글을 실은 사람 양쪽이 이유를 밝힙니다. 또한 이의가 있는 사람은 삭제 요청과 함께 사이트에 실을 반론도 낼 수 있습니다. 그리고 운영자는 글을 지울지가 정해지기 전에 <mark class="g">이의의 내용을 지체 없이 글에 게시합니다</mark>. 그래서 독자는 비판과 이의를 모두 읽을 수 있습니다. 나아가 이의가 있는 사람이 법적으로 다투고자 하는 경우, 운영자는 정보 공개 절차에 적절히 응합니다.</p>
+  <figure>
+    <figcaption>구상하고 있는 사이트에서 글에 이의가 제기되었을 때의 순서</figcaption>
+    <ol class="flow" style="--n:5">
+      <li><b>요청</b>이의가 있는 사람이 이유를 붙여 삭제를 요청한다. 반론도 함께 낼 수 있다</li>
+      <li class="good"><b>이의 게시</b>이의의 내용이 지체 없이 글에 게시된다</li>
+      <li class="good"><b>이유 주고받기</b>글은 곧바로 사라지지 않는다. 요청에는 기한 안에 이유가 붙은 답변이 돌아온다</li>
+      <li><b>재판</b>해결되지 않으면 일본 법원에서 다툰다</li>
+      <li><b>판단</b>법원의 판단대로 글을 남기거나 지운다</li>
+    </ol>
+    <p class="fignote">X에서는 '삭제'가 두 번째였습니다. 반면 구상하고 있는 사이트에서는 초록색 '이의 게시'와 '이유 주고받기'가 삭제보다 앞에 있습니다.</p>
+  </figure>
+
+  <h3>규칙 2　책임과 돈의 분담</h3>
+  <p>다음은 역할의 분담입니다. 구상하고 있는 사이트에는 글을 싣는 투고자, 사이트를 유지하는 운영자, 글에서 비판받는 쪽, 이렇게 세 당사자가 관여합니다. 이 가운데 게재 내용의 책임은 투고자가 집니다. 또한 투고자는 투고 1건당 수천 엔 정도를 냅니다. 이 비용은 장난을 막기 위한 것이며, 운영비로 씁니다. 반면 <mark class="g">운영자는 비판받는 쪽에게서 돈을 일절 받지 않습니다</mark>.</p>
+  <figure>
+    <figcaption>세 당사자 사이의 돈의 흐름</figcaption>
+    <svg class="diagram" viewBox="0 0 360 124" role="img" aria-label="투고자는 운영자에게 수천 엔을 낸다. 이 비용은 장난을 막고 운영비로 쓴다. 운영자는 비판받는 쪽에게서 돈을 받지 않는다.">
+      <use href="#person" x="23" y="6" width="40" height="40" fill="#222"/>
+      <text x="43" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">투고자</text>
+      <use href="#person" x="160" y="6" width="40" height="40" fill="#1f7a5c"/>
+      <text x="180" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1f7a5c">운영자</text>
+      <use href="#person" x="287" y="6" width="40" height="40" fill="#222"/>
+      <text x="307" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">비판받는 쪽</text>
+
+      <line x1="72" y1="26" x2="150" y2="26" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="111" y="16" text-anchor="middle" font-size="11.5" fill="#222">수천 엔 정도</text>
+      <line x1="278" y1="26" x2="210" y2="26" stroke="#c8402f" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M238 20 L250 32 M250 20 L238 32" stroke="#c8402f" stroke-width="2.2"/>
+      <text x="244" y="13" text-anchor="middle" font-size="11.5" fill="#c8402f">받지 않음</text>
+
+      <text x="105" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">장난을 막고</text>
+      <text x="105" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">운영비로 쓴다</text>
+      <text x="262" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">삭제·정정·반론</text>
+      <text x="262" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">게재는 모두 무료</text>
+    </svg>
+    <div class="roles">
+      <div>
+        <h4>투고자</h4>
+        <dl>
+          <dt>하는 일</dt><dd>투고 규칙을 지키겠다고 약속하고 투고한다</dd>
+          <dt>책임</dt><dd>게재 내용에 책임을 진다</dd>
+          <dt>이름</dt><dd>공개되지 않는다. 다만 법적 절차가 있으면 운영자가 공개한다</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>운영자</h4>
+        <dl>
+          <dt>하는 일</dt><dd>사이트를 유지하고, 삭제 요청에 답하고, 게재를 재검토한다</dd>
+          <dt>책임</dt><dd>권리 침해를 안 뒤의 대응에 대해 책임을 추궁당할 수 있다</dd>
+          <dt>이름</dt><dd>이름 또는 대리인 변호사의 연락처를 공개한다</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>비판받는 쪽</h4>
+        <dl>
+          <dt>할 수 있는 일</dt><dd>삭제 요청, 반론이나 정정 신청</dd>
+          <dt>돈</dt><dd>전혀 들지 않는다</dd>
+        </dl>
+      </div>
+    </div>
+  </figure>
+
+  <h3>규칙 3　글을 기한 없이 계속 싣지 않는다</h3>
+  <p>한편 비판 글을 기한 없이 계속 실으면 비판받은 사람의 불이익이 커집니다. 필자는 잊힐 권리도 보호되어야 한다고 생각합니다. 그래서 운영자는 글의 게재를 계속할 필요가 있는지를 정기적으로 재검토하고, 필요가 없어진 글을 다음 순서로 축소합니다.</p>
+  <figure>
+    <figcaption>게재를 축소하는 순서</figcaption>
+    <ol class="flow" style="--n:3">
+      <li><b>영상을 뺀다</b>인용한 영상 등을 글에서 뺀다</li>
+      <li><b>검색에 나오지 않게 한다</b>검색 엔진에 표시되지 않게 하고, 이름을 익명으로 바꾼다</li>
+      <li><b>내린다</b>글을 내린다</li>
+    </ol>
+  </figure>
+
+  <h3>규칙 4　신원을 밝히고, 법원의 판단에 따른다</h3>
+  <p>규칙 1에서 말한 대로, 구상하고 있는 사이트는 신청만으로는 글을 지우지 않습니다. 그러나 이것은 「고발 자료가 삭제되지 않는 사이트」를 만든다는 뜻이 아닙니다. 또한 투고자의 법적 책임을 피하는 것도 목적이 아닙니다. 그래서 글에 이의가 있는 사람이 재판으로 다툴 수 있도록 <mark class="g">운영자는 신원을 밝힙니다</mark>. 그리고 법원이 삭제를 명하면 운영자는 그 판단에 따릅니다.</p>
+
+  <h3>운영자가 질 것으로 예상되는 위험</h3>
+  <p>또한 구상하고 있는 사이트에 실리는 글도 일본 법에 어긋나면 삭제나 배상의 대상이 됩니다. 그래서 운영자가 지는 주요 위험과 대비를 아래에 제시합니다.</p>
+  <dl class="risks">
+    <dt>영상 게재가 인용으로 인정되지 않아 저작권 침해가 된다</dt><dd>영상은 검증에 필요한 부분만 잘라 쓴다</dd>
+    <dt>글의 내용이 명예훼손이나 사생활 침해가 된다</dt><dd>공공성이 있는 사실과 논평만 싣고, 근거 자료를 보관한다</dd>
+    <dt>시간이 지나 게재를 계속할 이유가 약해진다</dt><dd>게재를 정기적으로 재검토하고 단계적으로 축소한다</dd>
+    <dt>운영자가 권리 침해를 안 뒤에도 글을 방치한다</dt><dd>삭제 요청에 기한 안에 이유를 붙여 답한다</dd>
+  </dl>
+
+  <h2 id="open">아직 정해지지 않은 것</h2>
+  <p>사이트는 아직 없으며, 설계를 진행하는 단계입니다. 그래서 다음 논점은 아직 정해지지 않았습니다. 필자는 이 논점들에 대한 의견을 모으고 있습니다. 의견이나 요청은 <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">GitHub의 Issue</a>에 적어 주세요.</p>
+  <ul class="open">
+    <li><b>투고의 사전 확인 범위</b>운영자가 자세히 심사하면 규칙 위반은 줄어듭니다. 그러나 게재가 운영자 자신의 행위로 여겨지기 쉬워집니다.</li>
+    <li><b>투고 비용의 금액과 방식</b>수천 엔으로 장난을 막을 수 있는지가 논점입니다. 또한 게재 후에 돌려주는 예치금으로 하는 안도 있습니다.</li>
+    <li><b>게재를 계속하는 기준과 축소하는 기준</b>재검토의 빈도와, 게재 기간에 상한을 둘지가 정해지지 않았습니다.</li>
+    <li><b>비영리 조직으로 할 것인가</b>조직으로 하면 수지와 판단의 기록을 공개할 수 있습니다. 다만 설립과 유지에 수고와 비용이 듭니다. 어느 쪽이든 수지와 운영 실태는 투명해야 합니다.</li>
+    <li><b>운영자 쪽에서 쓰는 법적 절차</b>상대가 소송을 내지 않으면 재판은 시작되지 않습니다. 그래서 운영자가 먼저 소송을 낼지가 논점입니다.</li>
+    <li><b>이의를 제기하는 사람의 본인 확인</b>이의를 제기한 사람이 본인인지를 어떻게 확인할지가 정해지지 않았습니다. 본인 확인이 없으면 다른 사람이 본인을 사칭해 삭제를 요청할 수 있게 됩니다.</li>
+    <li><b>투고·이의 접수와 결제의 구현 방식</b>투고자의 개인정보와 결제 정보, 나아가 이의를 제기하는 사람의 본인 확인 정보를 다뤄야 합니다. 그래서 개인정보를 다루더라도 사이트 자체에는 보관하지 않는 구조로 할 수 없을지 검토하고 있습니다.</li>
+    <li><b>서버와 도메인을 두는 곳</b>서비스 사업자의 개입으로 글이 훼손되지 않도록 해외 서비스를 써야 하는지가 논점입니다. 해외 서비스를 쓰면 국내 사업자의 판단에 따른 삭제는 피하기 쉬워집니다. 그러나 해외 사업자도 권리 침해 통지를 받은 뒤 글을 방치하면 사업자 자신이 책임을 추궁당합니다. 그래서 해외 사업자도 통지를 받으면 글을 지울 수 있습니다. 즉, 해외에 두더라도 삭제를 완전히 피할 수는 없습니다.</li>
+  </ul>
+
+  <footer>
+    필자 <a href="https://x.com/hogehogejptweet">hogehogejptweet</a>　제1판(2026년 11월 25일)　원문은 일본어<br>
+    이 페이지는 구상 단계의 내용입니다. 법률에 관한 기술은 변호사의 확인을 받지 않았습니다.
+  </footer>
+</main>
+<script>
+(function(){
+  var sel=document.getElementById('lang');
+  if(sel)sel.addEventListener('change',function(){location.href=sel.value;});
+  var b=document.getElementById('share');
+  if(!b)return;
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var url=location.href.split('#')[0];
+    if(navigator.share){navigator.share({title:document.title,url:url}).catch(function(){});return;}
+    function done(){b.textContent=b.getAttribute('data-done');setTimeout(function(){b.textContent=label;},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){});}
+  });
+})();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

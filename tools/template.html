@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="«lang»">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«title»</title>
+<meta name="description" content="«desc»">
+«alternates»
+<style>
+:root{
+  --ink:#222222; --sub:#6b6b6b; --line:#e6e6e6; --paper:#ffffff;
+  --red:#c8402f; --red-bg:#fdecea;
+  --green:#1f7a5c; --green-bg:#e3f4ec;
+  --mark-y:#fff1a8; --mark-g:#d6f0e3;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:«font»;
+  font-size:17px;line-height:«lh»;letter-spacing:«ls»}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.topbar>div{max-width:640px;margin:0 auto;padding:0 20px;height:40px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1}
+.topbar select{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;max-width:7.5em;cursor:pointer}
+.topbar .acts{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:4px}
+.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-decoration-color:#b5b5b5;text-underline-offset:4px}
+.topbar a:focus-visible,.topbar button:focus-visible,.topbar select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+h2,h3{scroll-margin-top:56px}
+.wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
+h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
+h2{font-size:24px;line-height:1.5;font-weight:700;margin:96px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+h3{font-size:19px;line-height:1.6;font-weight:700;margin:56px 0 14px;padding-left:12px;border-left:5px solid var(--ink)}
+p{margin:0 0 1.5em}
+a{color:inherit;text-decoration-color:#b5b5b5;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+mark{color:inherit;padding:0 .08em;background:linear-gradient(transparent 58%,var(--mark-y) 58%)}
+mark.g{background:linear-gradient(transparent 58%,var(--mark-g) 58%)}
+.toc{font-size:14.5px;color:var(--sub);margin:0 0 8px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px}
+.src{font-size:13px;color:var(--sub);margin-top:-.9em}
+.view{border-left:3px solid var(--line);padding-left:16px;color:#444}
+figure{margin:32px 0 36px}
+figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+.fignote{font-size:13px;color:var(--sub);margin:12px 0 0}
+
+/* 手順の流れ */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:22px}
+.flow li{position:relative;border-top:3px solid #cfcfcf;padding-top:10px;font-size:13.5px;line-height:1.65;color:#444}
+.flow li b{display:block;font-size:15.5px;color:var(--ink);margin-bottom:2px}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:-8px;right:-17px;width:0;height:0;border-style:solid;border-width:6.5px 0 6.5px 10px;border-color:transparent transparent transparent #8a8a8a}
+.flow li.bad{border-top-color:var(--red)} .flow li.bad b{color:var(--red)}
+.flow li.good{border-top-color:var(--green)} .flow li.good b{color:var(--green)}
+
+/* 二つの負担 */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pair div{font-size:15px;line-height:1.8}
+.pair svg{display:block;margin-bottom:8px}
+.pair b{display:block;font-size:16px;margin-bottom:2px}
+
+/* 図（SVG） */
+.diagram{display:block;width:100%;max-width:440px;margin:0 auto;height:auto}
+.diagram text{font-family:inherit}
+
+/* 三者 */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
+.roles h4{font-size:16px;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.roles dl{margin:0;font-size:14px;line-height:1.7}
+.roles dt{color:var(--sub);font-size:12.5px;margin-top:8px}
+.roles dd{margin:0}
+
+/* 決まりの一覧 */
+.rules{margin:0 0 1.5em;padding-left:1.4em}
+.rules li{margin-bottom:.35em}
+
+/* リスク */
+.risks{margin:0}
+.risks dt{font-weight:700;margin-top:18px}
+.risks dd{margin:2px 0 0;padding-left:16px;border-left:3px solid var(--green-bg);color:#444}
+
+.open{padding-left:1.2em;margin:0 0 1.5em}
+.open li{margin-bottom:.9em}
+.open b{display:block}
+.xpost{margin:8px 0 28px}
+.xpost .twitter-tweet{margin:0 auto}
+.xlink{font-size:14px}
+footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);line-height:1.8}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:32px 18px 72px}
+  .topbar>div{padding:0 18px;font-size:12.5px;gap:8px}
+  .topbar .acts{gap:12px}
+  h1{font-size:25px} h2{font-size:21.5px;margin-top:72px} h3{font-size:17.5px;margin-top:46px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow li{border-top:0;border-left:3px solid #cfcfcf;padding:0 0 6px 16px;margin-bottom:26px;font-size:14px}
+  .flow li:last-child{margin-bottom:0}
+  .flow li.bad{border-left-color:var(--red)} .flow li.good{border-left-color:var(--green)}
+  .flow li:not(:last-child)::after{top:auto;bottom:-17px;left:-8px;right:auto;border-width:11px 6.5px 0 6.5px;border-color:#8a8a8a transparent transparent transparent}
+  .pair{grid-template-columns:1fr;gap:22px}
+  .roles{grid-template-columns:1fr;gap:20px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="person" viewBox="0 0 40 40"><circle cx="20" cy="13" r="7"/><path d="M6 38c0-10 6-15 14-15s14 5 14 15z"/></symbol>
+</svg>
+<header class="topbar"><div>
+  <select id="lang" aria-label="«bar_lang_label»">«options»</select>
+  <span class="acts">
+    <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">«bar_issue»</a>
+    <button type="button" id="share" data-done="«bar_copied»">«bar_share»</button>
+  </span>
+</div></header>
+
+<main class="wrap">
+  <h1>«title»</h1>
+  <ul class="toc">
+    <li><a href="#now">«h_now»</a></li>
+    <li><a href="#why">«h_why»</a></li>
+    <li><a href="#plan">«h_plan»</a></li>
+    <li><a href="#open">«h_open»</a></li>
+  </ul>
+
+  <h2 id="now">«h_now»</h2>
+  <p>«now_p1»</p>
+  <p class="src">«now_src»</p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="«xlang»" data-dnt="true"><p class="xlink"><a href="https://x.com/hogehogejptweet/status/2099382005985415569">«x_link»（@hogehogejptweet）</a></p></blockquote></div>
+  <p>«now_p2»</p>
+  <p class="view">«now_view»</p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="«xlang»" data-dnt="true"><p class="xlink"><a href="https://x.com/taugu7711/status/2124442262360735834">«x_link»（@taugu7711）</a></p></blockquote></div>
+
+  <h2 id="why">«h_why»</h2>
+  <p>«why_p»</p>
+
+  <h3>«h_dmca»</h3>
+  <p>«dmca_p»</p>
+  <figure>
+    <figcaption>«f1_cap»</figcaption>
+    <ol class="flow">
+      <li><b>«f1_1b»</b>«f1_1»</li>
+      <li class="bad"><b>«f1_2b»</b>«f1_2»</li>
+      <li><b>«f1_3b»</b>«f1_3»</li>
+      <li><b>«f1_4b»</b>«f1_4»</li>
+    </ol>
+    <p class="fignote">«f1_note»</p>
+  </figure>
+  <p>«abuse_p»</p>
+  <p class="src">«abuse_src»</p>
+
+  <h3>«h_burden»</h3>
+  <p>«burden_p»</p>
+  <figure>
+    <div class="pair">
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><rect x="4" y="10" width="40" height="28" fill="none" stroke="#c8402f" stroke-width="2.5"/><circle cx="16" cy="21" r="4.5" fill="#c8402f"/><path d="M8 33c1-6 15-6 16 0z" fill="#c8402f"/><line x1="28" y1="19" x2="40" y2="19" stroke="#c8402f" stroke-width="2.5"/><line x1="28" y1="27" x2="38" y2="27" stroke="#c8402f" stroke-width="2.5"/></svg>
+        <b>«b1_t»</b>
+        «b1_d»
+      </div>
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><path d="M6 18 L24 6 L42 18 z" fill="#c8402f"/><rect x="10" y="21" width="4" height="15" fill="#c8402f"/><rect x="22" y="21" width="4" height="15" fill="#c8402f"/><rect x="34" y="21" width="4" height="15" fill="#c8402f"/><rect x="5" y="38" width="38" height="4" fill="#c8402f"/></svg>
+        <b>«b2_t»</b>
+        «b2_d»
+      </div>
+    </div>
+  </figure>
+  <p>«burden_p2»</p>
+  <p class="src">«burden_src»</p>
+
+  <h2 id="plan">«h_plan»</h2>
+  <p>«plan_p»</p>
+
+  <h3>«h_all»</h3>
+  <p>«all_p»</p>
+  <figure>
+    <figcaption>«d_cap»</figcaption>
+    <svg class="diagram" viewBox="0 0 360 372" role="img" aria-label="«d_aria»">
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker><marker id="arg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1f7a5c"/></marker></defs>
+      <use href="#person" x="45" y="4" width="34" height="34" fill="#222"/>
+      <text x="62" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">«d_poster»</text>
+      <text x="62" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">«d_poster_s»</text>
+      <use href="#person" x="267" y="4" width="34" height="34" fill="#222"/>
+      <text x="284" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">«d_target»</text>
+      <text x="284" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">«d_target_s»</text>
+
+      <line x1="62" y1="88" x2="62" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="72" y="124" font-size="12" fill="#222">«d_a1»</text>
+      <line x1="262" y1="88" x2="262" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="252" y="116" text-anchor="end" font-size="12" fill="#222">«d_a2a»</text>
+      <text x="252" y="132" text-anchor="end" font-size="12" fill="#222">«d_a2b»</text>
+      <line x1="296" y1="150" x2="296" y2="88" stroke="#1f7a5c" stroke-width="1.5" marker-end="url(#arg)"/>
+      <text x="304" y="124" font-size="12" fill="#1f7a5c">«d_a3»</text>
+
+      <rect x="10" y="156" width="340" height="74" rx="6" fill="#e3f4ec"/>
+      <text x="180" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#1f7a5c">«d_site»</text>
+      <text x="180" y="210" text-anchor="middle" font-size="12" fill="#222">«d_site_s»</text>
+
+      <line x1="180" y1="236" x2="180" y2="290" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="190" y="268" font-size="12" fill="#222">«d_unres»</text>
+      <rect x="40" y="296" width="280" height="66" rx="6" fill="none" stroke="#cfcfcf" stroke-width="1.5"/>
+      <text x="180" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#222">«d_court»</text>
+      <text x="180" y="345" text-anchor="middle" font-size="12" fill="#6b6b6b">«d_court_s»</text>
+    </svg>
+  </figure>
+  <p>«rules_p»</p>
+  <ol class="rules">
+    <li>«r1»</li>
+    <li>«r2»</li>
+    <li>«r3»</li>
+    <li>«r4»</li>
+  </ol>
+
+  <h3>«h_r1»</h3>
+  <p>«r1_p»</p>
+  <figure>
+    <figcaption>«f2_cap»</figcaption>
+    <ol class="flow" style="--n:5">
+      <li><b>«f2_1b»</b>«f2_1»</li>
+      <li class="good"><b>«f2_2b»</b>«f2_2»</li>
+      <li class="good"><b>«f2_3b»</b>«f2_3»</li>
+      <li><b>«f2_4b»</b>«f2_4»</li>
+      <li><b>«f2_5b»</b>«f2_5»</li>
+    </ol>
+    <p class="fignote">«f2_note»</p>
+  </figure>
+
+  <h3>«h_r2»</h3>
+  <p>«r2_p»</p>
+  <figure>
+    <figcaption>«m_cap»</figcaption>
+    <svg class="diagram" viewBox="0 0 360 124" role="img" aria-label="«m_aria»">
+      <use href="#person" x="23" y="6" width="40" height="40" fill="#222"/>
+      <text x="43" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">«m_poster»</text>
+      <use href="#person" x="160" y="6" width="40" height="40" fill="#1f7a5c"/>
+      <text x="180" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1f7a5c">«m_op»</text>
+      <use href="#person" x="287" y="6" width="40" height="40" fill="#222"/>
+      <text x="307" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">«m_target»</text>
+
+      <line x1="72" y1="26" x2="150" y2="26" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="111" y="16" text-anchor="middle" font-size="11.5" fill="#222">«m_fee»</text>
+      <line x1="278" y1="26" x2="210" y2="26" stroke="#c8402f" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M238 20 L250 32 M250 20 L238 32" stroke="#c8402f" stroke-width="2.2"/>
+      <text x="244" y="13" text-anchor="middle" font-size="11.5" fill="#c8402f">«m_no»</text>
+
+      <text x="105" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">«m_n1a»</text>
+      <text x="105" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">«m_n1b»</text>
+      <text x="262" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">«m_n2a»</text>
+      <text x="262" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">«m_n2b»</text>
+    </svg>
+    <div class="roles">
+      <div>
+        <h4>«role1_h»</h4>
+        <dl>
+          <dt>«lb_do»</dt><dd>«role1_do»</dd>
+          <dt>«lb_resp»</dt><dd>«role1_resp»</dd>
+          <dt>«lb_name»</dt><dd>«role1_name»</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>«role2_h»</h4>
+        <dl>
+          <dt>«lb_do»</dt><dd>«role2_do»</dd>
+          <dt>«lb_resp»</dt><dd>«role2_resp»</dd>
+          <dt>«lb_name»</dt><dd>«role2_name»</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>«role3_h»</h4>
+        <dl>
+          <dt>«lb_can»</dt><dd>«role3_can»</dd>
+          <dt>«lb_money»</dt><dd>«role3_money»</dd>
+        </dl>
+      </div>
+    </div>
+  </figure>
+
+  <h3>«h_r3»</h3>
+  <p>«r3_p»</p>
+  <figure>
+    <figcaption>«f3_cap»</figcaption>
+    <ol class="flow" style="--n:3">
+      <li><b>«f3_1b»</b>«f3_1»</li>
+      <li><b>«f3_2b»</b>«f3_2»</li>
+      <li><b>«f3_3b»</b>«f3_3»</li>
+    </ol>
+  </figure>
+
+  <h3>«h_r4»</h3>
+  <p>«r4_p»</p>
+
+  <h3>«h_risk»</h3>
+  <p>«risk_p»</p>
+  <dl class="risks">
+    <dt>«k1»</dt><dd>«k1d»</dd>
+    <dt>«k2»</dt><dd>«k2d»</dd>
+    <dt>«k3»</dt><dd>«k3d»</dd>
+    <dt>«k4»</dt><dd>«k4d»</dd>
+  </dl>
+
+  <h2 id="open">«h_open»</h2>
+  <p>«open_p»</p>
+  <ul class="open">
+    <li><b>«o1b»</b>«o1»</li>
+    <li><b>«o2b»</b>«o2»</li>
+    <li><b>«o3b»</b>«o3»</li>
+    <li><b>«o4b»</b>«o4»</li>
+    <li><b>«o5b»</b>«o5»</li>
+    <li><b>«o6b»</b>«o6»</li>
+    <li><b>«o7b»</b>«o7»</li>
+    <li><b>«o8b»</b>«o8»</li>
+  </ul>
+
+  <footer>
+    «foot1»<br>
+    «foot2»
+  </footer>
+</main>
+<script>
+(function(){
+  var sel=document.getElementById('lang');
+  if(sel)sel.addEventListener('change',function(){location.href=sel.value;});
+  var b=document.getElementById('share');
+  if(!b)return;
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var url=location.href.split('#')[0];
+    if(navigator.share){navigator.share({title:document.title,url:url}).catch(function(){});return;}
+    function done(){b.textContent=b.getAttribute('data-done');setTimeout(function(){b.textContent=label;},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){});}
+  });
+})();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

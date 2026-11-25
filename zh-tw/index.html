@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAHAKU公司濫用DMCA，連正當的批評也被刪除</title>
+<meta name="description" content="批評的貼文只憑一份申請就被刪除的問題，以及讓雙方先說明理由再決定的網站構想。">
+<link rel="alternate" hreflang="ja" href="https://yukimichihatastu.github.io/dmca-fair-forum/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://yukimichihatastu.github.io/dmca-fair-forum/zh-tw/">
+<link rel="alternate" hreflang="ko" href="https://yukimichihatastu.github.io/dmca-fair-forum/ko/">
+<link rel="alternate" hreflang="de" href="https://yukimichihatastu.github.io/dmca-fair-forum/de/">
+
+<style>
+:root{
+  --ink:#222222; --sub:#6b6b6b; --line:#e6e6e6; --paper:#ffffff;
+  --red:#c8402f; --red-bg:#fdecea;
+  --green:#1f7a5c; --green-bg:#e3f4ec;
+  --mark-y:#fff1a8; --mark-g:#d6f0e3;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei","Heiti TC",sans-serif;
+  font-size:17px;line-height:1.9;letter-spacing:.02em}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.topbar>div{max-width:640px;margin:0 auto;padding:0 20px;height:40px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1}
+.topbar select{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;max-width:7.5em;cursor:pointer}
+.topbar .acts{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:4px}
+.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-decoration-color:#b5b5b5;text-underline-offset:4px}
+.topbar a:focus-visible,.topbar button:focus-visible,.topbar select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+h2,h3{scroll-margin-top:56px}
+.wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
+h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
+h2{font-size:24px;line-height:1.5;font-weight:700;margin:96px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+h3{font-size:19px;line-height:1.6;font-weight:700;margin:56px 0 14px;padding-left:12px;border-left:5px solid var(--ink)}
+p{margin:0 0 1.5em}
+a{color:inherit;text-decoration-color:#b5b5b5;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+mark{color:inherit;padding:0 .08em;background:linear-gradient(transparent 58%,var(--mark-y) 58%)}
+mark.g{background:linear-gradient(transparent 58%,var(--mark-g) 58%)}
+.toc{font-size:14.5px;color:var(--sub);margin:0 0 8px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px}
+.src{font-size:13px;color:var(--sub);margin-top:-.9em}
+.view{border-left:3px solid var(--line);padding-left:16px;color:#444}
+figure{margin:32px 0 36px}
+figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+.fignote{font-size:13px;color:var(--sub);margin:12px 0 0}
+
+/* 手順の流れ */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:22px}
+.flow li{position:relative;border-top:3px solid #cfcfcf;padding-top:10px;font-size:13.5px;line-height:1.65;color:#444}
+.flow li b{display:block;font-size:15.5px;color:var(--ink);margin-bottom:2px}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:-8px;right:-17px;width:0;height:0;border-style:solid;border-width:6.5px 0 6.5px 10px;border-color:transparent transparent transparent #8a8a8a}
+.flow li.bad{border-top-color:var(--red)} .flow li.bad b{color:var(--red)}
+.flow li.good{border-top-color:var(--green)} .flow li.good b{color:var(--green)}
+
+/* 二つの負担 */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pair div{font-size:15px;line-height:1.8}
+.pair svg{display:block;margin-bottom:8px}
+.pair b{display:block;font-size:16px;margin-bottom:2px}
+
+/* 図（SVG） */
+.diagram{display:block;width:100%;max-width:440px;margin:0 auto;height:auto}
+.diagram text{font-family:inherit}
+
+/* 三者 */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
+.roles h4{font-size:16px;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.roles dl{margin:0;font-size:14px;line-height:1.7}
+.roles dt{color:var(--sub);font-size:12.5px;margin-top:8px}
+.roles dd{margin:0}
+
+/* 決まりの一覧 */
+.rules{margin:0 0 1.5em;padding-left:1.4em}
+.rules li{margin-bottom:.35em}
+
+/* リスク */
+.risks{margin:0}
+.risks dt{font-weight:700;margin-top:18px}
+.risks dd{margin:2px 0 0;padding-left:16px;border-left:3px solid var(--green-bg);color:#444}
+
+.open{padding-left:1.2em;margin:0 0 1.5em}
+.open li{margin-bottom:.9em}
+.open b{display:block}
+.xpost{margin:8px 0 28px}
+.xpost .twitter-tweet{margin:0 auto}
+.xlink{font-size:14px}
+footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);line-height:1.8}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:32px 18px 72px}
+  .topbar>div{padding:0 18px;font-size:12.5px;gap:8px}
+  .topbar .acts{gap:12px}
+  h1{font-size:25px} h2{font-size:21.5px;margin-top:72px} h3{font-size:17.5px;margin-top:46px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow li{border-top:0;border-left:3px solid #cfcfcf;padding:0 0 6px 16px;margin-bottom:26px;font-size:14px}
+  .flow li:last-child{margin-bottom:0}
+  .flow li.bad{border-left-color:var(--red)} .flow li.good{border-left-color:var(--green)}
+  .flow li:not(:last-child)::after{top:auto;bottom:-17px;left:-8px;right:auto;border-width:11px 6.5px 0 6.5px;border-color:#8a8a8a transparent transparent transparent}
+  .pair{grid-template-columns:1fr;gap:22px}
+  .roles{grid-template-columns:1fr;gap:20px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="person" viewBox="0 0 40 40"><circle cx="20" cy="13" r="7"/><path d="M6 38c0-10 6-15 14-15s14 5 14 15z"/></symbol>
+</svg>
+<header class="topbar"><div>
+  <select id="lang" aria-label="語言"><option value=".././">日本語</option><option value="../zh-tw/" selected>繁體中文</option><option value="../ko/">한국어</option><option value="../de/">Deutsch</option></select>
+  <span class="acts">
+    <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">意見請寫在Issue</a>
+    <button type="button" id="share" data-done="已複製連結">分享</button>
+  </span>
+</div></header>
+
+<main class="wrap">
+  <h1>GAHAKU公司濫用DMCA，連正當的批評也被刪除</h1>
+  <ul class="toc">
+    <li><a href="#now">目前發生的事</a></li>
+    <li><a href="#why">貼文被刪除的原因</a></li>
+    <li><a href="#plan">構想中的網站</a></li>
+    <li><a href="#open">尚未決定的事項</a></li>
+  </ul>
+
+  <h2 id="now">目前發生的事</h2>
+  <p>堀大輔先生公開表示自己「每天只睡30分鐘」，並以一般社團法人日本短眠者培育協會（日本ショートスリーパー育成協会）代表理事的身分，提供收費的睡眠改善課程。自2026年8月起，社群媒體上質疑堀先生主張的聲音逐漸擴大。另外，堀先生YouTube頻道的影片上，標有GAHAKU公司（GAHAKU CO., LTD.）的著作權聲明。</p>
+  <p class="src">出處：<a href="https://weekly.ascii.jp/elem/000/004/434/4434756/">週刊ASCII（2026年9月15日）</a></p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="zh-tw" data-dnt="true"><p class="xlink"><a href="https://x.com/hogehogejptweet/status/2099382005985415569">查看X上的貼文（@hogehogejptweet）</a></p></blockquote></div>
+  <p>然而，對堀先生的批評越來越難傳到讀者眼前。首先，在堀先生的YouTube直播中，批評他的留言遭到刪除。此外，在X上，附有前學員等人提供的影片（並非課程本身的內容）或YouTube直播剪輯影片的貼文，也遭到刪除。</p>
+  <p class="view">筆者認為，這些刪除是不回應批評，而利用DMCA消除正當批評的行為。</p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="zh-tw" data-dnt="true"><p class="xlink"><a href="https://x.com/taugu7711/status/2124442262360735834">查看X上的貼文（@taugu7711）</a></p></blockquote></div>
+
+  <h2 id="why">貼文被刪除的原因</h2>
+  <p>X上的貼文只憑一份申請就消失，原因有兩個。第一是DMCA的機制，第二是住在日本的人提出異議時的負擔。</p>
+
+  <h3>DMCA的機制</h3>
+  <p>X是美國公司，因此依照美國《數位千禧年著作權法》（DMCA）處理刪除申請。DMCA規定，業者（也就是X）只要在收到申請後立刻刪除，就不必為著作權侵害負責。因此，<mark>X在確認申請是否正確之前，就會先刪除貼文</mark>。</p>
+  <figure>
+    <figcaption>在X上從申請、刪除到異議的順序</figcaption>
+    <ol class="flow">
+      <li><b>申請</b>自稱權利人的人向X提出申請</li>
+      <li class="bad"><b>刪除</b>X在確認申請是否正確之前就刪除貼文</li>
+      <li><b>異議</b>發文者在貼文消失之後才能提出異議</li>
+      <li><b>恢復或訴訟</b>申請人若未在美國提起訴訟，貼文就會恢復</li>
+    </ol>
+    <p class="fignote">紅色的「刪除」，發生在聽取發文者的說法之前。</p>
+  </figure>
+  <p>有人利用這個機制，讓對自己不利的資訊被刪除。這在美國國內也被視為問題。</p>
+  <p class="src">出處：<a href="https://eff.org/deeplinks/2026/09/court-rules-against-citizen-journalists-dmca-takedown-case-eff-will-appeal">電子前哨基金會（EFF）</a>、<a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h3>住在日本的人的負擔</h3>
+  <p>當然，貼文被刪除的人可以提出異議。但是，住在日本的人必須依美國的程序提出異議，而且必須把自己的姓名和地址告訴申請刪除的人。</p>
+  <figure>
+    <div class="pair">
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><rect x="4" y="10" width="40" height="28" fill="none" stroke="#c8402f" stroke-width="2.5"/><circle cx="16" cy="21" r="4.5" fill="#c8402f"/><path d="M8 33c1-6 15-6 16 0z" fill="#c8402f"/><line x1="28" y1="19" x2="40" y2="19" stroke="#c8402f" stroke-width="2.5"/><line x1="28" y1="27" x2="38" y2="27" stroke="#c8402f" stroke-width="2.5"/></svg>
+        <b>姓名和地址會傳給對方</b>
+        提出異議的人必須填寫自己的姓名和地址，而這些資訊會傳給申請刪除的人。
+      </div>
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><path d="M6 18 L24 6 L42 18 z" fill="#c8402f"/><rect x="10" y="21" width="4" height="15" fill="#c8402f"/><rect x="22" y="21" width="4" height="15" fill="#c8402f"/><rect x="34" y="21" width="4" height="15" fill="#c8402f"/><rect x="5" y="38" width="38" height="4" fill="#c8402f"/></svg>
+        <b>必須應對美國的訴訟</b>
+        提出異議的人必須同意在美國法院進行訴訟。如果申請人在美國提告，應訴的費用對個人來說是很大的負擔。
+      </div>
+    </div>
+  </figure>
+  <p>因此，不少人即使貼文被刪除，也不提出異議。而只要沒有人提出異議，申請人的主張是否正確就無從確認。結果，<mark>在日本，申請刪除的一方比在美國更占優勢</mark>。</p>
+  <p class="src">出處：<a href="https://nlab.itmedia.co.jp/cont/articles/3317243/">Netlab（ねとらぼ）</a>、<a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h2 id="plan">構想中的網站</h2>
+  <p>因此，雖然還在構想階段，筆者認為，如果有下面這樣的機制，應該對公共利益有所幫助。</p>
+
+  <h3>整體樣貌</h3>
+  <p>構想中的網站，刊登以公共利益為目的的查證與批評文章。而當文章遭到異議時，<mark class="g">不會只憑申請就刪除文章，而是先聽取雙方的理由再決定</mark>。</p>
+  <figure>
+    <figcaption>構想中網站的整體樣貌</figcaption>
+    <svg class="diagram" viewBox="0 0 360 372" role="img" aria-label="投稿者刊登文章。被批評的一方提出刪除請求與反駁，網站立刻公開異議內容，營運者附理由回覆。無法解決時，由日本的法院判斷。">
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker><marker id="arg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1f7a5c"/></marker></defs>
+      <use href="#person" x="45" y="4" width="34" height="34" fill="#222"/>
+      <text x="62" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">投稿者</text>
+      <text x="62" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">對內容負責</text>
+      <use href="#person" x="267" y="4" width="34" height="34" fill="#222"/>
+      <text x="284" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">被批評的一方</text>
+      <text x="284" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">可以提出異議</text>
+
+      <line x1="62" y1="88" x2="62" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="72" y="124" font-size="12" fill="#222">刊登文章</text>
+      <line x1="262" y1="88" x2="262" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="252" y="116" text-anchor="end" font-size="12" fill="#222">刪除請求</text>
+      <text x="252" y="132" text-anchor="end" font-size="12" fill="#222">與反駁</text>
+      <line x1="296" y1="150" x2="296" y2="88" stroke="#1f7a5c" stroke-width="1.5" marker-end="url(#arg)"/>
+      <text x="304" y="124" font-size="12" fill="#1f7a5c">回覆</text>
+
+      <rect x="10" y="156" width="340" height="74" rx="6" fill="#e3f4ec"/>
+      <text x="180" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#1f7a5c">構想中的網站</text>
+      <text x="180" y="210" text-anchor="middle" font-size="12" fill="#222">立刻公開異議，並附理由回覆</text>
+
+      <line x1="180" y1="236" x2="180" y2="290" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="190" y="268" font-size="12" fill="#222">無法解決時</text>
+      <rect x="40" y="296" width="280" height="66" rx="6" fill="none" stroke="#cfcfcf" stroke-width="1.5"/>
+      <text x="180" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#222">日本的法院</text>
+      <text x="180" y="345" text-anchor="middle" font-size="12" fill="#6b6b6b">判斷文章要保留還是刪除</text>
+    </svg>
+  </figure>
+  <p>這個整體樣貌由以下四項規則構成。下面依序說明。</p>
+  <ol class="rules">
+    <li>即使有人提出異議，也不立刻刪除文章，並盡快公開異議內容</li>
+    <li>刊登內容由投稿者負責；營運者不向被批評的一方收取任何費用</li>
+    <li>文章不會無限期刊登</li>
+    <li>營運者公開身分，並遵從日本法院的判斷</li>
+  </ol>
+
+  <h3>規則1　不立刻刪除文章，並盡快公開異議</h3>
+  <p>在構想中的網站，刪除申請不會直接導致刪除。取而代之的是，在決定是否刪除文章之前，提出異議的人和刊登文章的人雙方都要說明理由。另外，提出異議的人在請求刪除的同時，也可以提交要刊登在網站上的反駁。而且，在決定是否刪除文章之前，<mark class="g">營運者會毫不拖延地把異議內容刊登在文章中</mark>。因此，讀者可以同時讀到批評和異議。此外，如果提出異議的人希望透過法律途徑解決，營運者會適當地配合資訊揭露的程序。</p>
+  <figure>
+    <figcaption>在構想中的網站，文章遭到異議時的順序</figcaption>
+    <ol class="flow" style="--n:5">
+      <li><b>請求</b>有異議的人附上理由請求刪除，也可以一併提交反駁</li>
+      <li class="good"><b>公開異議</b>異議內容會毫不拖延地刊登在文章中</li>
+      <li class="good"><b>交換理由</b>文章不會立刻消失。請求會在期限內得到附理由的回覆</li>
+      <li><b>訴訟</b>無法解決時，在日本的法院爭訟</li>
+      <li><b>判斷</b>依法院的判斷保留或刪除文章</li>
+    </ol>
+    <p class="fignote">在X上，「刪除」排在第二步。相對地，在構想中的網站，綠色的「公開異議」和「交換理由」排在刪除之前。</p>
+  </figure>
+
+  <h3>規則2　責任與費用的分擔</h3>
+  <p>接著是角色的分擔。構想中的網站有三方參與：刊登文章的投稿者、維持網站的營運者，以及在文章中被批評的一方。其中，刊登內容的責任由投稿者承擔。另外，投稿者每投稿一篇要支付數千日圓左右。這筆費用是為了防止惡作劇，並用於營運。相對地，<mark class="g">營運者完全不向被批評的一方收取費用</mark>。</p>
+  <figure>
+    <figcaption>三方之間的金錢流向</figcaption>
+    <svg class="diagram" viewBox="0 0 360 124" role="img" aria-label="投稿者向營運者支付數千日圓。這筆費用用來防止惡作劇，並用於營運。營運者不向被批評的一方收取費用。">
+      <use href="#person" x="23" y="6" width="40" height="40" fill="#222"/>
+      <text x="43" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">投稿者</text>
+      <use href="#person" x="160" y="6" width="40" height="40" fill="#1f7a5c"/>
+      <text x="180" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1f7a5c">營運者</text>
+      <use href="#person" x="287" y="6" width="40" height="40" fill="#222"/>
+      <text x="307" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">被批評的一方</text>
+
+      <line x1="72" y1="26" x2="150" y2="26" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="111" y="16" text-anchor="middle" font-size="11.5" fill="#222">數千日圓</text>
+      <line x1="278" y1="26" x2="210" y2="26" stroke="#c8402f" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M238 20 L250 32 M250 20 L238 32" stroke="#c8402f" stroke-width="2.2"/>
+      <text x="244" y="13" text-anchor="middle" font-size="11.5" fill="#c8402f">不收取</text>
+
+      <text x="105" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">防止惡作劇，</text>
+      <text x="105" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">並用於營運</text>
+      <text x="262" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">刪除、更正、反駁的</text>
+      <text x="262" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">刊登全部免費</text>
+    </svg>
+    <div class="roles">
+      <div>
+        <h4>投稿者</h4>
+        <dl>
+          <dt>要做的事</dt><dd>承諾遵守投稿規則後投稿</dd>
+          <dt>責任</dt><dd>對刊登內容負責</dd>
+          <dt>姓名</dt><dd>不公開。但若有法律程序，營運者會揭露</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>營運者</h4>
+        <dl>
+          <dt>要做的事</dt><dd>維持網站、回覆刪除請求、檢視是否繼續刊登</dd>
+          <dt>責任</dt><dd>得知侵權之後的處理方式，可能被追究責任</dd>
+          <dt>姓名</dt><dd>公開姓名或代理律師的聯絡方式</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>被批評的一方</h4>
+        <dl>
+          <dt>可以做的事</dt><dd>請求刪除、提出反駁或更正</dd>
+          <dt>費用</dt><dd>完全免費</dd>
+        </dl>
+      </div>
+    </div>
+  </figure>
+
+  <h3>規則3　文章不會無限期刊登</h3>
+  <p>另一方面，批評的文章如果無限期刊登，被批評者受到的不利益會越來越大。筆者認為，被遺忘權也應該受到保護。因此，營運者會定期檢視是否有必要繼續刊登，並依下列順序縮小已無必要的文章。</p>
+  <figure>
+    <figcaption>縮小刊登範圍的順序</figcaption>
+    <ol class="flow" style="--n:3">
+      <li><b>移除影片</b>把引用的影片等內容從文章中移除</li>
+      <li><b>不出現在搜尋結果</b>不讓搜尋引擎顯示，並將姓名匿名化</li>
+      <li><b>撤下</b>撤下文章</li>
+    </ol>
+  </figure>
+
+  <h3>規則4　公開身分，並遵從法院的判斷</h3>
+  <p>如規則1所述，構想中的網站不會只憑申請就刪除文章。但是，這並不表示要建立一個「檢舉資料不會被刪除的網站」。另外，目的也不是讓投稿者逃避法律責任。因此，為了讓對文章有異議的人能夠透過訴訟爭執，<mark class="g">營運者會公開自己的身分</mark>。而且，如果法院命令刪除，營運者會遵從該判斷。</p>
+
+  <h3>營運者預期要面對的風險</h3>
+  <p>此外，構想中的網站所刊登的文章，如果違反日本法律，同樣會成為刪除或賠償的對象。因此，以下列出營運者要承擔的主要風險與因應方式。</p>
+  <dl class="risks">
+    <dt>刊登影片不被認定為引用，構成著作權侵害</dt><dd>影片只擷取查證所需的部分</dd>
+    <dt>文章內容構成名譽毀損或侵害隱私</dt><dd>只刊登具公共性的事實與評論，並保存佐證資料</dd>
+    <dt>隨著時間經過，繼續刊登的理由變弱</dt><dd>定期檢視是否繼續刊登，並分階段縮小</dd>
+    <dt>營運者得知侵權之後仍放任文章不處理</dt><dd>在期限內附理由回覆刪除請求</dd>
+  </dl>
+
+  <h2 id="open">尚未決定的事項</h2>
+  <p>網站尚未建立，目前還在設計階段。因此，以下幾點尚未決定。筆者正在徵求對這些問題的意見。意見和建議請寫在<a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">GitHub的Issue</a>。</p>
+  <ul class="open">
+    <li><b>投稿的事前確認範圍</b>營運者審查得越仔細，違規就越少。但是，刊登也越容易被視為營運者自己的行為。</li>
+    <li><b>投稿費用的金額與方式</b>問題在於數千日圓是否足以防止惡作劇。另外，也有改採刊登後退還的保證金的方案。</li>
+    <li><b>繼續刊登與縮小的標準</b>檢視的頻率，以及是否為刊登期間設定上限，都尚未決定。</li>
+    <li><b>是否成立非營利組織</b>成立組織的話，可以公開收支與判斷的紀錄。但是，設立和維持需要人力與費用。無論如何，收支與營運的實際情況都必須透明。</li>
+    <li><b>由營運者一方採取的法律程序</b>對方不提告，訴訟就不會開始。因此，問題在於是否由營運者主動提起訴訟。</li>
+    <li><b>提出異議者的身分確認</b>如何確認提出異議的人是否為本人，尚未決定。如果沒有身分確認，他人就可以冒用本人名義請求刪除。</li>
+    <li><b>受理投稿、異議與付款的實作方式</b>必須處理投稿者的個人資料與付款資訊，以及提出異議者的身分確認資訊。因此，筆者正在研究，能否做到即使處理個人資料，網站本身也不加以保存。</li>
+    <li><b>伺服器與網域的設置地點</b>問題在於，為了避免文章因服務業者介入而受損，是否應該使用海外的服務。使用海外服務，比較容易避免因國內業者的判斷而被刪除。但是，海外業者在收到侵權通知後如果放任文章不處理，業者自己也會被追究責任。因此，海外業者收到通知後也可能刪除文章。也就是說，即使放在海外，也無法完全避免被刪除。</li>
+  </ul>
+
+  <footer>
+    筆者 <a href="https://x.com/hogehogejptweet">hogehogejptweet</a>　第一版（2026年11月25日）　原文為日文<br>
+    本頁內容仍在構想階段。有關法律的敘述未經律師確認。
+  </footer>
+</main>
+<script>
+(function(){
+  var sel=document.getElementById('lang');
+  if(sel)sel.addEventListener('change',function(){location.href=sel.value;});
+  var b=document.getElementById('share');
+  if(!b)return;
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var url=location.href.split('#')[0];
+    if(navigator.share){navigator.share({title:document.title,url:url}).catch(function(){});return;}
+    function done(){b.textContent=b.getAttribute('data-done');setTimeout(function(){b.textContent=label;},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){});}
+  });
+})();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wie durch DMCA-Missbrauch der Firma GAHAKU auch berechtigte Kritik verschwindet</title>
+<meta name="description" content="Kritische Beiträge verschwinden allein durch einen Löschantrag. Entwurf einer Website, auf der beide Seiten zuerst ihre Gründe nennen.">
+<link rel="alternate" hreflang="ja" href="https://yukimichihatastu.github.io/dmca-fair-forum/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://yukimichihatastu.github.io/dmca-fair-forum/zh-tw/">
+<link rel="alternate" hreflang="ko" href="https://yukimichihatastu.github.io/dmca-fair-forum/ko/">
+<link rel="alternate" hreflang="de" href="https://yukimichihatastu.github.io/dmca-fair-forum/de/">
+
+<style>
+:root{
+  --ink:#222222; --sub:#6b6b6b; --line:#e6e6e6; --paper:#ffffff;
+  --red:#c8402f; --red-bg:#fdecea;
+  --green:#1f7a5c; --green-bg:#e3f4ec;
+  --mark-y:#fff1a8; --mark-g:#d6f0e3;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;line-height:1.75;letter-spacing:0}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.topbar>div{max-width:640px;margin:0 auto;padding:0 20px;height:40px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1}
+.topbar select{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;max-width:7.5em;cursor:pointer}
+.topbar .acts{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:4px}
+.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-decoration-color:#b5b5b5;text-underline-offset:4px}
+.topbar a:focus-visible,.topbar button:focus-visible,.topbar select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+h2,h3{scroll-margin-top:56px}
+.wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
+h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
+h2{font-size:24px;line-height:1.5;font-weight:700;margin:96px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+h3{font-size:19px;line-height:1.6;font-weight:700;margin:56px 0 14px;padding-left:12px;border-left:5px solid var(--ink)}
+p{margin:0 0 1.5em}
+a{color:inherit;text-decoration-color:#b5b5b5;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+mark{color:inherit;padding:0 .08em;background:linear-gradient(transparent 58%,var(--mark-y) 58%)}
+mark.g{background:linear-gradient(transparent 58%,var(--mark-g) 58%)}
+.toc{font-size:14.5px;color:var(--sub);margin:0 0 8px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px}
+.src{font-size:13px;color:var(--sub);margin-top:-.9em}
+.view{border-left:3px solid var(--line);padding-left:16px;color:#444}
+figure{margin:32px 0 36px}
+figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+.fignote{font-size:13px;color:var(--sub);margin:12px 0 0}
+
+/* 手順の流れ */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:22px}
+.flow li{position:relative;border-top:3px solid #cfcfcf;padding-top:10px;font-size:13.5px;line-height:1.65;color:#444}
+.flow li b{display:block;font-size:15.5px;color:var(--ink);margin-bottom:2px}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:-8px;right:-17px;width:0;height:0;border-style:solid;border-width:6.5px 0 6.5px 10px;border-color:transparent transparent transparent #8a8a8a}
+.flow li.bad{border-top-color:var(--red)} .flow li.bad b{color:var(--red)}
+.flow li.good{border-top-color:var(--green)} .flow li.good b{color:var(--green)}
+
+/* 二つの負担 */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pair div{font-size:15px;line-height:1.8}
+.pair svg{display:block;margin-bottom:8px}
+.pair b{display:block;font-size:16px;margin-bottom:2px}
+
+/* 図（SVG） */
+.diagram{display:block;width:100%;max-width:440px;margin:0 auto;height:auto}
+.diagram text{font-family:inherit}
+
+/* 三者 */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
+.roles h4{font-size:16px;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.roles dl{margin:0;font-size:14px;line-height:1.7}
+.roles dt{color:var(--sub);font-size:12.5px;margin-top:8px}
+.roles dd{margin:0}
+
+/* 決まりの一覧 */
+.rules{margin:0 0 1.5em;padding-left:1.4em}
+.rules li{margin-bottom:.35em}
+
+/* リスク */
+.risks{margin:0}
+.risks dt{font-weight:700;margin-top:18px}
+.risks dd{margin:2px 0 0;padding-left:16px;border-left:3px solid var(--green-bg);color:#444}
+
+.open{padding-left:1.2em;margin:0 0 1.5em}
+.open li{margin-bottom:.9em}
+.open b{display:block}
+.xpost{margin:8px 0 28px}
+.xpost .twitter-tweet{margin:0 auto}
+.xlink{font-size:14px}
+footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);line-height:1.8}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:32px 18px 72px}
+  .topbar>div{padding:0 18px;font-size:12.5px;gap:8px}
+  .topbar .acts{gap:12px}
+  h1{font-size:25px} h2{font-size:21.5px;margin-top:72px} h3{font-size:17.5px;margin-top:46px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow li{border-top:0;border-left:3px solid #cfcfcf;padding:0 0 6px 16px;margin-bottom:26px;font-size:14px}
+  .flow li:last-child{margin-bottom:0}
+  .flow li.bad{border-left-color:var(--red)} .flow li.good{border-left-color:var(--green)}
+  .flow li:not(:last-child)::after{top:auto;bottom:-17px;left:-8px;right:auto;border-width:11px 6.5px 0 6.5px;border-color:#8a8a8a transparent transparent transparent}
+  .pair{grid-template-columns:1fr;gap:22px}
+  .roles{grid-template-columns:1fr;gap:20px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="person" viewBox="0 0 40 40"><circle cx="20" cy="13" r="7"/><path d="M6 38c0-10 6-15 14-15s14 5 14 15z"/></symbol>
+</svg>
+<header class="topbar"><div>
+  <select id="lang" aria-label="Sprache"><option value=".././">日本語</option><option value="../zh-tw/">繁體中文</option><option value="../ko/">한국어</option><option value="../de/" selected>Deutsch</option></select>
+  <span class="acts">
+    <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">Feedback per Issue</a>
+    <button type="button" id="share" data-done="Link kopiert">Teilen</button>
+  </span>
+</div></header>
+
+<main class="wrap">
+  <h1>Wie durch DMCA-Missbrauch der Firma GAHAKU auch berechtigte Kritik verschwindet</h1>
+  <ul class="toc">
+    <li><a href="#now">Was gerade geschieht</a></li>
+    <li><a href="#why">Warum Beiträge gelöscht werden</a></li>
+    <li><a href="#plan">Die geplante Website</a></li>
+    <li><a href="#open">Was noch offen ist</a></li>
+  </ul>
+
+  <h2 id="now">Was gerade geschieht</h2>
+  <p>Daisuke Hori (堀大輔) erklärt öffentlich, er schlafe nur „30 Minuten pro Tag“. Als Vorstandsvorsitzender der japanischen „Short Sleeper“-Vereinigung (日本ショートスリーパー育成協会) bietet er kostenpflichtige Programme zur Schlafverbesserung an. Seit August 2026 werden in sozialen Netzwerken zunehmend Zweifel an seinen Aussagen geäußert. Die Videos auf seinem YouTube-Kanal tragen außerdem einen Urhebervermerk der Firma GAHAKU (GAHAKU CO., LTD.).</p>
+  <p class="src">Quelle: <a href="https://weekly.ascii.jp/elem/000/004/434/4434756/">Shūkan ASCII (15. September 2026)</a></p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="de" data-dnt="true"><p class="xlink"><a href="https://x.com/hogehogejptweet/status/2099382005985415569">Beitrag auf X ansehen（@hogehogejptweet）</a></p></blockquote></div>
+  <p>Die Kritik an Hori erreicht die Leser jedoch immer schlechter. Erstens werden in seinen YouTube-Livestreams kritische Kommentare gelöscht. Zweitens werden auf X Beiträge gelöscht, die Videos von ehemaligen Kursteilnehmern (keine Inhalte aus dem eigentlichen Kurs) oder Ausschnitte aus den YouTube-Livestreams enthalten.</p>
+  <p class="view">Der Verfasser hält diese Löschungen für den Versuch, berechtigte Kritik mithilfe des DMCA zu entfernen, statt auf sie zu antworten.</p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="de" data-dnt="true"><p class="xlink"><a href="https://x.com/taugu7711/status/2124442262360735834">Beitrag auf X ansehen（@taugu7711）</a></p></blockquote></div>
+
+  <h2 id="why">Warum Beiträge gelöscht werden</h2>
+  <p>Dass Beiträge auf X allein durch einen Antrag verschwinden, hat zwei Gründe. Der erste ist die Funktionsweise des DMCA. Der zweite ist die Belastung, die ein Widerspruch für Menschen in Japan bedeutet.</p>
+
+  <h3>Wie der DMCA funktioniert</h3>
+  <p>X ist ein US-Unternehmen und bearbeitet Löschanträge deshalb nach dem US-amerikanischen Digital Millennium Copyright Act (DMCA). Der DMCA schützt einen Anbieter, also X, vor der Haftung für Urheberrechtsverletzungen, wenn er nach einem Antrag sofort löscht. Deshalb <mark>löscht X einen Beitrag, bevor geprüft wird, ob der Antrag berechtigt ist</mark>.</p>
+  <figure>
+    <figcaption>Ablauf auf X: vom Antrag über die Löschung bis zum Widerspruch</figcaption>
+    <ol class="flow">
+      <li><b>Antrag</b>Jemand gibt sich als Rechteinhaber aus und stellt bei X einen Antrag</li>
+      <li class="bad"><b>Löschung</b>X löscht den Beitrag, bevor der Antrag geprüft wird</li>
+      <li><b>Widerspruch</b>Der Autor kann erst nach der Löschung widersprechen</li>
+      <li><b>Wiederherstellung oder Klage</b>Klagt der Antragsteller nicht in den USA, kommt der Beitrag zurück</li>
+    </ol>
+    <p class="fignote">Die rot markierte Löschung erfolgt, bevor der Autor des Beitrags angehört wird.</p>
+  </figure>
+  <p>Es gibt Fälle, in denen dieses Verfahren genutzt wird, um unliebsame Informationen löschen zu lassen. Das wird auch in den USA als Problem gesehen.</p>
+  <p class="src">Quellen: <a href="https://eff.org/deeplinks/2026/09/court-rules-against-citizen-journalists-dmca-takedown-case-eff-will-appeal">Electronic Frontier Foundation (EFF)</a>, <a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h3>Die Belastung für Menschen in Japan</h3>
+  <p>Natürlich kann jemand, dessen Beitrag gelöscht wurde, widersprechen. Wer in Japan lebt, muss den Widerspruch jedoch im US-Verfahren einlegen und zudem dem Antragsteller den eigenen Namen und die eigene Adresse mitteilen.</p>
+  <figure>
+    <div class="pair">
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><rect x="4" y="10" width="40" height="28" fill="none" stroke="#c8402f" stroke-width="2.5"/><circle cx="16" cy="21" r="4.5" fill="#c8402f"/><path d="M8 33c1-6 15-6 16 0z" fill="#c8402f"/><line x1="28" y1="19" x2="40" y2="19" stroke="#c8402f" stroke-width="2.5"/><line x1="28" y1="27" x2="38" y2="27" stroke="#c8402f" stroke-width="2.5"/></svg>
+        <b>Name und Adresse gehen an die Gegenseite</b>
+        Wer widerspricht, muss den eigenen Namen und die eigene Adresse angeben. Diese Angaben werden an den Antragsteller weitergegeben.
+      </div>
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><path d="M6 18 L24 6 L42 18 z" fill="#c8402f"/><rect x="10" y="21" width="4" height="15" fill="#c8402f"/><rect x="22" y="21" width="4" height="15" fill="#c8402f"/><rect x="34" y="21" width="4" height="15" fill="#c8402f"/><rect x="5" y="38" width="38" height="4" fill="#c8402f"/></svg>
+        <b>Man muss sich einem US-Gericht stellen</b>
+        Wer widerspricht, muss zustimmen, den Streit vor einem US-Gericht auszutragen. Klagt der Antragsteller in den USA, sind die Kosten für eine Privatperson eine große Belastung.
+      </div>
+    </div>
+  </figure>
+  <p>Deshalb verzichten viele auf einen Widerspruch, obwohl ihr Beitrag gelöscht wurde. Ohne Widerspruch wird aber nie geprüft, ob die Behauptung des Antragstellers stimmt. Im Ergebnis ist <mark>die Seite, die eine Löschung beantragt, in Japan noch stärker im Vorteil als in den USA</mark>.</p>
+  <p class="src">Quellen: <a href="https://nlab.itmedia.co.jp/cont/articles/3317243/">Netlab (ねとらぼ)</a>, <a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h2 id="plan">Die geplante Website</h2>
+  <p>Deshalb meint der Verfasser, dass das folgende Verfahren dem öffentlichen Interesse dienen könnte. Es handelt sich noch um einen Entwurf.</p>
+
+  <h3>Das Gesamtbild</h3>
+  <p>Die geplante Website veröffentlicht Recherchen und Kritik, die dem öffentlichen Interesse dienen. Wird einem Artikel widersprochen, dann <mark class="g">wird er nicht allein aufgrund eines Antrags gelöscht, sondern erst entschieden, nachdem beide Seiten ihre Gründe genannt haben</mark>.</p>
+  <figure>
+    <figcaption>Gesamtbild der geplanten Website</figcaption>
+    <svg class="diagram" viewBox="0 0 360 372" role="img" aria-label="Der Einsender veröffentlicht einen Artikel. Die kritisierte Seite stellt einen Löschantrag und reicht eine Gegendarstellung ein. Die Website veröffentlicht den Widerspruch sofort, der Betreiber antwortet mit Begründung. Ohne Einigung entscheidet ein japanisches Gericht.">
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker><marker id="arg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1f7a5c"/></marker></defs>
+      <use href="#person" x="45" y="4" width="34" height="34" fill="#222"/>
+      <text x="62" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">Einsender</text>
+      <text x="62" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">haftet für den Inhalt</text>
+      <use href="#person" x="267" y="4" width="34" height="34" fill="#222"/>
+      <text x="284" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">Kritisierte Seite</text>
+      <text x="284" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">kann widersprechen</text>
+
+      <line x1="62" y1="88" x2="62" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="72" y="124" font-size="12" fill="#222">Artikel</text>
+      <line x1="262" y1="88" x2="262" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="252" y="116" text-anchor="end" font-size="12" fill="#222">Löschantrag und</text>
+      <text x="252" y="132" text-anchor="end" font-size="12" fill="#222">Gegendarstellung</text>
+      <line x1="296" y1="150" x2="296" y2="88" stroke="#1f7a5c" stroke-width="1.5" marker-end="url(#arg)"/>
+      <text x="304" y="124" font-size="12" fill="#1f7a5c">Antwort</text>
+
+      <rect x="10" y="156" width="340" height="74" rx="6" fill="#e3f4ec"/>
+      <text x="180" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#1f7a5c">Geplante Website</text>
+      <text x="180" y="210" text-anchor="middle" font-size="12" fill="#222">veröffentlicht den Widerspruch, antwortet begründet</text>
+
+      <line x1="180" y1="236" x2="180" y2="290" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="190" y="268" font-size="12" fill="#222">ohne Einigung</text>
+      <rect x="40" y="296" width="280" height="66" rx="6" fill="none" stroke="#cfcfcf" stroke-width="1.5"/>
+      <text x="180" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#222">Japanisches Gericht</text>
+      <text x="180" y="345" text-anchor="middle" font-size="12" fill="#6b6b6b">entscheidet über Verbleib oder Löschung</text>
+    </svg>
+  </figure>
+  <p>Dieses Gesamtbild beruht auf vier Regeln. Sie werden im Folgenden der Reihe nach erläutert.</p>
+  <ol class="rules">
+    <li>Ein Artikel wird trotz Widerspruch nicht sofort gelöscht; der Widerspruch wird umgehend veröffentlicht</li>
+    <li>Für den Inhalt haftet der Einsender; der Betreiber nimmt von der kritisierten Seite kein Geld</li>
+    <li>Artikel bleiben nicht unbegrenzt online</li>
+    <li>Der Betreiber legt seine Identität offen und folgt den Entscheidungen japanischer Gerichte</li>
+  </ol>
+
+  <h3>Regel 1: Nicht sofort löschen, Widerspruch umgehend veröffentlichen</h3>
+  <p>Auf der geplanten Website führt ein Löschantrag nicht unmittelbar zur Löschung. Stattdessen nennen beide Seiten ihre Gründe, bevor über die Löschung entschieden wird: wer widerspricht und wer den Artikel eingereicht hat. Wer widerspricht, kann zusammen mit dem Löschantrag außerdem eine Gegendarstellung einreichen, die auf der Website erscheint. Und noch bevor über die Löschung entschieden ist, <mark class="g">veröffentlicht der Betreiber den Inhalt des Widerspruchs unverzüglich beim Artikel</mark>. So können die Leser sowohl die Kritik als auch den Widerspruch lesen. Will die widersprechende Seite außerdem rechtlich vorgehen, kommt der Betreiber einem Auskunftsverfahren ordnungsgemäß nach.</p>
+  <figure>
+    <figcaption>Ablauf auf der geplanten Website, wenn einem Artikel widersprochen wird</figcaption>
+    <ol class="flow" style="--n:5">
+      <li><b>Antrag</b>Wer widerspricht, beantragt die Löschung mit Begründung und kann eine Gegendarstellung beifügen</li>
+      <li class="good"><b>Widerspruch erscheint</b>Der Inhalt des Widerspruchs wird unverzüglich beim Artikel veröffentlicht</li>
+      <li class="good"><b>Austausch der Gründe</b>Der Artikel verschwindet nicht sofort. Auf den Antrag folgt fristgerecht eine begründete Antwort</li>
+      <li><b>Gericht</b>Ohne Einigung wird vor einem japanischen Gericht gestritten</li>
+      <li><b>Entscheidung</b>Der Artikel bleibt oder wird gelöscht, wie das Gericht entscheidet</li>
+    </ol>
+    <p class="fignote">Auf X stand die Löschung an zweiter Stelle. Auf der geplanten Website stehen dagegen die grün markierten Schritte vor einer Löschung.</p>
+  </figure>
+
+  <h3>Regel 2: Verteilung von Verantwortung und Geld</h3>
+  <p>Als Nächstes zur Rollenverteilung. An der geplanten Website sind drei Parteien beteiligt: der Einsender, der einen Artikel veröffentlicht, der Betreiber, der die Website unterhält, und die Seite, die im Artikel kritisiert wird. Für den Inhalt haftet der Einsender. Außerdem zahlt der Einsender pro Artikel einige tausend Yen. Diese Gebühr soll Missbrauch verhindern und wird für den Betrieb verwendet. Dagegen <mark class="g">nimmt der Betreiber von der kritisierten Seite keinerlei Geld</mark>.</p>
+  <figure>
+    <figcaption>Geldfluss zwischen den drei Parteien</figcaption>
+    <svg class="diagram" viewBox="0 0 360 124" role="img" aria-label="Der Einsender zahlt dem Betreiber einige tausend Yen. Die Gebühr soll Missbrauch verhindern und deckt Betriebskosten. Der Betreiber nimmt von der kritisierten Seite kein Geld.">
+      <use href="#person" x="23" y="6" width="40" height="40" fill="#222"/>
+      <text x="43" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">Einsender</text>
+      <use href="#person" x="160" y="6" width="40" height="40" fill="#1f7a5c"/>
+      <text x="180" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1f7a5c">Betreiber</text>
+      <use href="#person" x="287" y="6" width="40" height="40" fill="#222"/>
+      <text x="307" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">Kritisierte</text>
+
+      <line x1="72" y1="26" x2="150" y2="26" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="111" y="16" text-anchor="middle" font-size="11.5" fill="#222">einige 1.000 ¥</text>
+      <line x1="278" y1="26" x2="210" y2="26" stroke="#c8402f" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M238 20 L250 32 M250 20 L238 32" stroke="#c8402f" stroke-width="2.2"/>
+      <text x="244" y="13" text-anchor="middle" font-size="11.5" fill="#c8402f">kein Geld</text>
+
+      <text x="105" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">gegen Missbrauch,</text>
+      <text x="105" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">für den Betrieb</text>
+      <text x="262" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">Löschung, Korrektur,</text>
+      <text x="262" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">Gegendarstellung: gratis</text>
+    </svg>
+    <div class="roles">
+      <div>
+        <h4>Einsender</h4>
+        <dl>
+          <dt>Aufgabe</dt><dd>sagt zu, die Regeln einzuhalten, und reicht den Artikel ein</dd>
+          <dt>Verantwortung</dt><dd>haftet für den veröffentlichten Inhalt</dd>
+          <dt>Name</dt><dd>wird nicht veröffentlicht; bei einem rechtlichen Verfahren gibt der Betreiber ihn jedoch heraus</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>Betreiber</h4>
+        <dl>
+          <dt>Aufgabe</dt><dd>unterhält die Website, beantwortet Löschanträge und überprüft die Veröffentlichung</dd>
+          <dt>Verantwortung</dt><dd>kann dafür haften, wie er handelt, nachdem er von einer Rechtsverletzung erfahren hat</dd>
+          <dt>Name</dt><dd>veröffentlicht den eigenen Namen oder die Kontaktdaten eines Anwalts</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>Kritisierte Seite</h4>
+        <dl>
+          <dt>Möglichkeiten</dt><dd>Löschung beantragen, Gegendarstellung oder Korrektur einreichen</dd>
+          <dt>Kosten</dt><dd>keine</dd>
+        </dl>
+      </div>
+    </div>
+  </figure>
+
+  <h3>Regel 3: Artikel bleiben nicht unbegrenzt online</h3>
+  <p>Bleibt ein kritischer Artikel dagegen unbegrenzt online, wächst der Nachteil für die kritisierte Person. Der Verfasser meint, dass auch das Recht auf Vergessenwerden geschützt werden sollte. Deshalb prüft der Betreiber regelmäßig, ob ein Artikel weiter veröffentlicht bleiben muss, und schränkt nicht mehr nötige Artikel in dieser Reihenfolge ein.</p>
+  <figure>
+    <figcaption>Reihenfolge der Einschränkung</figcaption>
+    <ol class="flow" style="--n:3">
+      <li><b>Videos entfernen</b>Zitierte Videos und Ähnliches werden aus dem Artikel entfernt</li>
+      <li><b>Aus der Suche nehmen</b>Der Artikel erscheint nicht mehr in Suchmaschinen, Namen werden anonymisiert</li>
+      <li><b>Zurückziehen</b>Der Artikel wird zurückgezogen</li>
+    </ol>
+  </figure>
+
+  <h3>Regel 4: Identität offenlegen und Gerichtsentscheidungen folgen</h3>
+  <p>Wie bei Regel 1 beschrieben, löscht die geplante Website einen Artikel nicht allein aufgrund eines Antrags. Das bedeutet jedoch nicht, dass eine „Website, auf der Enthüllungen nicht gelöscht werden können“ entstehen soll. Ebenso wenig soll der Einsender seiner rechtlichen Verantwortung entzogen werden. Damit also jeder, der einem Artikel widerspricht, vor Gericht ziehen kann, <mark class="g">legt der Betreiber seine Identität offen</mark>. Und ordnet ein Gericht die Löschung an, folgt der Betreiber dieser Entscheidung.</p>
+
+  <h3>Risiken, mit denen der Betreiber rechnet</h3>
+  <p>Auch Artikel auf der geplanten Website können gelöscht werden oder zu Schadensersatz führen, wenn sie gegen japanisches Recht verstoßen. Im Folgenden stehen deshalb die wichtigsten Risiken des Betreibers und die Vorkehrungen dagegen.</p>
+  <dl class="risks">
+    <dt>Ein Video gilt nicht als Zitat und verletzt das Urheberrecht</dt><dd>Aus Videos wird nur der Teil verwendet, der für die Überprüfung nötig ist</dd>
+    <dt>Der Inhalt eines Artikels ist rufschädigend oder verletzt die Privatsphäre</dt><dd>Es erscheinen nur Tatsachen von öffentlichem Interesse und Kommentare dazu; Belege werden aufbewahrt</dd>
+    <dt>Mit der Zeit wird die Begründung für die Veröffentlichung schwächer</dt><dd>Die Veröffentlichung wird regelmäßig überprüft und schrittweise eingeschränkt</dd>
+    <dt>Der Betreiber lässt einen Artikel stehen, obwohl er von einer Rechtsverletzung weiß</dt><dd>Löschanträge werden fristgerecht und mit Begründung beantwortet</dd>
+  </dl>
+
+  <h2 id="open">Was noch offen ist</h2>
+  <p>Die Website gibt es noch nicht; sie wird derzeit entworfen. Die folgenden Punkte sind deshalb noch offen. Der Verfasser bittet zu diesen Punkten um Meinungen. Feedback und Wünsche bitte als <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">Issue auf GitHub</a>.</p>
+  <ul class="open">
+    <li><b>Umfang der Vorabprüfung</b>Prüft der Betreiber Einsendungen genau, gibt es weniger Regelverstöße. Die Veröffentlichung wird dann aber eher als eigene Handlung des Betreibers gewertet.</li>
+    <li><b>Höhe und Art der Gebühr</b>Offen ist, ob einige tausend Yen Missbrauch verhindern. Denkbar ist auch eine Kaution, die nach der Veröffentlichung zurückgezahlt wird.</li>
+    <li><b>Kriterien für Verbleib und Einschränkung</b>Offen sind die Häufigkeit der Überprüfung und die Frage, ob es eine Höchstdauer geben soll.</li>
+    <li><b>Gemeinnützige Organisation?</b>Eine Organisation könnte Einnahmen, Ausgaben und Entscheidungen offenlegen. Gründung und Unterhalt kosten jedoch Zeit und Geld. In jedem Fall müssen Finanzen und Betrieb transparent sein.</li>
+    <li><b>Rechtliche Schritte des Betreibers</b>Solange die Gegenseite nicht klagt, beginnt kein Gerichtsverfahren. Offen ist deshalb, ob der Betreiber selbst klagen soll.</li>
+    <li><b>Identitätsprüfung bei Widersprüchen</b>Offen ist, wie geprüft wird, ob ein Widerspruch wirklich von der betroffenen Person stammt. Ohne Prüfung könnte jemand unter fremdem Namen eine Löschung beantragen.</li>
+    <li><b>Technische Umsetzung von Einsendung, Widerspruch und Zahlung</b>Verarbeitet werden müssen persönliche Daten und Zahlungsdaten der Einsender sowie Daten zur Identitätsprüfung der Widersprechenden. Der Verfasser prüft deshalb, ob die Website solche Daten verarbeiten kann, ohne sie selbst zu speichern.</li>
+    <li><b>Standort von Server und Domain</b>Offen ist, ob ein Dienst im Ausland genutzt werden soll, damit Artikel nicht durch Eingriffe eines Anbieters verloren gehen. Mit einem ausländischen Dienst lassen sich Löschungen durch inländische Anbieter leichter vermeiden. Auch ein ausländischer Anbieter haftet jedoch selbst, wenn er nach einem Hinweis auf eine Rechtsverletzung untätig bleibt. Deshalb löscht auch er unter Umständen nach einem Hinweis. Eine Löschung lässt sich im Ausland also nicht völlig ausschließen.</li>
+  </ul>
+
+  <footer>
+    Verfasser: <a href="https://x.com/hogehogejptweet">hogehogejptweet</a>, erste Fassung (25. November 2026), Original auf Japanisch<br>
+    Diese Seite beschreibt einen Entwurf. Die rechtlichen Aussagen wurden nicht von einem Anwalt geprüft.
+  </footer>
+</main>
+<script>
+(function(){
+  var sel=document.getElementById('lang');
+  if(sel)sel.addEventListener('change',function(){location.href=sel.value;});
+  var b=document.getElementById('share');
+  if(!b)return;
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var url=location.href.split('#')[0];
+    if(navigator.share){navigator.share({title:document.title,url:url}).catch(function(){});return;}
+    function done(){b.textContent=b.getAttribute('data-done');setTimeout(function(){b.textContent=label;},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){});}
+  });
+})();
+</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>

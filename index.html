@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GAHAKU社のDMCA濫用で正当な批判も消えてしまう件</title>
 <meta name="description" content="批判の投稿が削除申請だけで消える問題と、双方が理由を示してから決めるサイトの構想。">
+<link rel="alternate" hreflang="ja" href="https://yukimichihatastu.github.io/dmca-fair-forum/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://yukimichihatastu.github.io/dmca-fair-forum/zh-tw/">
+<link rel="alternate" hreflang="ko" href="https://yukimichihatastu.github.io/dmca-fair-forum/ko/">
+<link rel="alternate" hreflang="de" href="https://yukimichihatastu.github.io/dmca-fair-forum/de/">
+
 <style>
 :root{
   --ink:#222222; --sub:#6b6b6b; --line:#e6e6e6; --paper:#ffffff;
@@ -17,10 +22,14 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);
   font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic","Noto Sans JP",Meiryo,sans-serif;
   font-size:17px;line-height:1.95;letter-spacing:.02em}
-.topbar{border-bottom:1px solid var(--line);background:var(--paper)}
-.topbar div{max-width:640px;margin:0 auto;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1.5;color:var(--sub)}
-.topbar a{flex:none;color:var(--ink);font-weight:700;text-decoration:none;border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px}
-.topbar a:hover{background:var(--ink);color:#fff}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.topbar>div{max-width:640px;margin:0 auto;padding:0 20px;height:40px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1}
+.topbar select{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;max-width:7.5em;cursor:pointer}
+.topbar .acts{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:4px}
+.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-decoration-color:#b5b5b5;text-underline-offset:4px}
+.topbar a:focus-visible,.topbar button:focus-visible,.topbar select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+h2,h3{scroll-margin-top:56px}
 .wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
 h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
 h2{font-size:24px;line-height:1.5;font-weight:700;margin:96px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
@@ -82,7 +91,8 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 @media (max-width:600px){
   body{font-size:16px}
   .wrap{padding:32px 18px 72px}
-  .topbar div{padding:9px 18px;font-size:12.5px}
+  .topbar>div{padding:0 18px;font-size:12.5px;gap:8px}
+  .topbar .acts{gap:12px}
   h1{font-size:25px} h2{font-size:21.5px;margin-top:72px} h3{font-size:17.5px;margin-top:46px}
   .flow{grid-template-columns:1fr;gap:0}
   .flow li{border-top:0;border-left:3px solid #cfcfcf;padding:0 0 6px 16px;margin-bottom:26px;font-size:14px}
@@ -98,8 +108,13 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="person" viewBox="0 0 40 40"><circle cx="20" cy="13" r="7"/><path d="M6 38c0-10 6-15 14-15s14 5 14 15z"/></symbol>
 </svg>
-
-<header class="topbar"><div><span>構想段階のページです</span><a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">意見・要望はIssueへ</a></div></header>
+<header class="topbar"><div>
+  <select id="lang" aria-label="言語"><option value="./" selected>日本語</option><option value="zh-tw/">繁體中文</option><option value="ko/">한국어</option><option value="de/">Deutsch</option></select>
+  <span class="acts">
+    <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">意見・要望はIssueへ</a>
+    <button type="button" id="share" data-done="コピーしました">共有</button>
+  </span>
+</div></header>
 
 <main class="wrap">
   <h1>GAHAKU社のDMCA濫用で正当な批判も消えてしまう件</h1>
@@ -163,23 +178,21 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
   <figure>
     <figcaption>構想しているサイトの全体像</figcaption>
     <svg class="diagram" viewBox="0 0 360 372" role="img" aria-label="投稿者が記事を載せる。批判される側は削除の要請と反論を出し、サイトは異議をすぐに掲示して、運営者が理由つきで回答する。解決しないときは日本の裁判所が判断する。">
-      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker></defs>
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker><marker id="arg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1f7a5c"/></marker></defs>
       <use href="#person" x="45" y="4" width="34" height="34" fill="#222"/>
       <text x="62" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">投稿者</text>
       <text x="62" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">内容の責任を負う</text>
-      <use href="#person" x="281" y="4" width="34" height="34" fill="#222"/>
-      <text x="298" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">批判される側</text>
-      <text x="298" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">異議を出せる</text>
+      <use href="#person" x="267" y="4" width="34" height="34" fill="#222"/>
+      <text x="284" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">批判される側</text>
+      <text x="284" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">異議を出せる</text>
 
       <line x1="62" y1="88" x2="62" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
       <text x="72" y="124" font-size="12" fill="#222">記事を載せる</text>
-      <line x1="282" y1="88" x2="282" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
-      <text x="272" y="116" text-anchor="end" font-size="12" fill="#222">削除の要請</text>
-      <text x="272" y="132" text-anchor="end" font-size="12" fill="#222">と反論</text>
-      <line x1="318" y1="150" x2="318" y2="88" stroke="#1f7a5c" stroke-width="1.5" marker-end="url(#ar)"/>
-      <text x="326" y="116" font-size="11.5" fill="#1f7a5c">理由</text>
-      <text x="326" y="131" font-size="11.5" fill="#1f7a5c">つきの</text>
-      <text x="326" y="146" font-size="11.5" fill="#1f7a5c">回答</text>
+      <line x1="262" y1="88" x2="262" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="252" y="116" text-anchor="end" font-size="12" fill="#222">削除の要請</text>
+      <text x="252" y="132" text-anchor="end" font-size="12" fill="#222">と反論</text>
+      <line x1="296" y1="150" x2="296" y2="88" stroke="#1f7a5c" stroke-width="1.5" marker-end="url(#arg)"/>
+      <text x="304" y="124" font-size="12" fill="#1f7a5c">回答</text>
 
       <rect x="10" y="156" width="340" height="74" rx="6" fill="#e3f4ec"/>
       <text x="180" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#1f7a5c">構想しているサイト</text>
@@ -187,7 +200,7 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 
       <line x1="180" y1="236" x2="180" y2="290" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
       <text x="190" y="268" font-size="12" fill="#222">解決しないとき</text>
-      <rect x="70" y="296" width="220" height="66" rx="6" fill="none" stroke="#cfcfcf" stroke-width="1.5"/>
+      <rect x="40" y="296" width="280" height="66" rx="6" fill="none" stroke="#cfcfcf" stroke-width="1.5"/>
       <text x="180" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#222">日本の裁判所</text>
       <text x="180" y="345" text-anchor="middle" font-size="12" fill="#6b6b6b">記事を残すか消すかを判断する</text>
     </svg>
@@ -223,18 +236,19 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
       <text x="43" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">投稿者</text>
       <use href="#person" x="160" y="6" width="40" height="40" fill="#1f7a5c"/>
       <text x="180" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1f7a5c">運営者</text>
-      <use href="#person" x="297" y="6" width="40" height="40" fill="#222"/>
-      <text x="317" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">批判される側</text>
+      <use href="#person" x="287" y="6" width="40" height="40" fill="#222"/>
+      <text x="307" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">批判される側</text>
 
       <line x1="72" y1="26" x2="150" y2="26" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
       <text x="111" y="16" text-anchor="middle" font-size="11.5" fill="#222">数千円程度</text>
-      <line x1="288" y1="26" x2="210" y2="26" stroke="#c8402f" stroke-width="1.5" stroke-dasharray="4 4"/>
-      <path d="M243 20 L255 32 M255 20 L243 32" stroke="#c8402f" stroke-width="2.2"/>
-      <text x="249" y="13" text-anchor="middle" font-size="11.5" fill="#c8402f">受け取らない</text>
+      <line x1="278" y1="26" x2="210" y2="26" stroke="#c8402f" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M238 20 L250 32 M250 20 L238 32" stroke="#c8402f" stroke-width="2.2"/>
+      <text x="244" y="13" text-anchor="middle" font-size="11.5" fill="#c8402f">受け取らない</text>
 
-      <text x="111" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">いたずらを防ぎ、</text><text x="111" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">運営費にあてる</text>
-      <text x="249" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">削除・訂正・反論の</text>
-      <text x="249" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">掲載はすべて無料</text>
+      <text x="105" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">いたずらを防ぎ、</text>
+      <text x="105" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">運営費にあてる</text>
+      <text x="262" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">削除・訂正・反論の</text>
+      <text x="262" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">掲載はすべて無料</text>
     </svg>
     <div class="roles">
       <div>
@@ -275,19 +289,15 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
   </figure>
 
   <h3>決まり4　身元を明らかにし、裁判所の判断に従う</h3>
-  <p>ただし、筆者は「告発資料が削除されないサイト」を作ろうとしているのではありません。また、投稿者の法的責任を避けることも目的にしていません。そのため、<mark class="g">運営者は身元を明らかにし、日本の裁判所の判断に従います</mark>。</p>
+  <p>決まり1で述べたとおり、構想しているサイトは、申請だけでは記事を消しません。しかし、これは「告発資料が削除されないサイト」を作るという意味ではありません。また、投稿者の法的責任を避けることも目的にしていません。そこで、記事に異議がある人が裁判で争えるように、<mark class="g">運営者は身元を明らかにします</mark>。そして、裁判所が削除を命じた場合、運営者はその判断に従います。</p>
 
   <h3>想定している運営者のリスク</h3>
   <p>なお、構想しているサイトに載せる記事も、日本の法律に反すれば削除や賠償の対象になります。そこで、運営者が負う主なリスクと備えを次に示します。</p>
   <dl class="risks">
-    <dt>動画の掲載が引用と認められず、著作権侵害になる</dt>
-    <dd>動画は検証に必要な部分だけを切り出す</dd>
-    <dt>記事の内容が名誉毀損やプライバシー侵害になる</dt>
-    <dd>公共性のある事実と論評だけを載せ、根拠資料を保存する</dd>
-    <dt>時間が経ち、掲載を続ける理由が弱くなる</dt>
-    <dd>掲載を定期的に見直し、段階的に縮小する</dd>
-    <dt>運営者が権利侵害を知ったあとも記事を放置する</dt>
-    <dd>削除の要請に期限内に理由つきで回答する</dd>
+    <dt>動画の掲載が引用と認められず、著作権侵害になる</dt><dd>動画は検証に必要な部分だけを切り出す</dd>
+    <dt>記事の内容が名誉毀損やプライバシー侵害になる</dt><dd>公共性のある事実と論評だけを載せ、根拠資料を保存する</dd>
+    <dt>時間が経ち、掲載を続ける理由が弱くなる</dt><dd>掲載を定期的に見直し、段階的に縮小する</dd>
+    <dt>運営者が権利侵害を知ったあとも記事を放置する</dt><dd>削除の要請に期限内に理由つきで回答する</dd>
   </dl>
 
   <h2 id="open">決まっていないこと</h2>
@@ -308,6 +318,21 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
     このページは構想段階の内容です。法律に関する記述は弁護士の確認を受けていません。
   </footer>
 </main>
+<script>
+(function(){
+  var sel=document.getElementById('lang');
+  if(sel)sel.addEventListener('change',function(){location.href=sel.value;});
+  var b=document.getElementById('share');
+  if(!b)return;
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var url=location.href.split('#')[0];
+    if(navigator.share){navigator.share({title:document.title,url:url}).catch(function(){});return;}
+    function done(){b.textContent=b.getAttribute('data-done');setTimeout(function(){b.textContent=label;},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){});}
+  });
+})();
+</script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
