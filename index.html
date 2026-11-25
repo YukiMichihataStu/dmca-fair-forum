@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAHAKU社のDMCA濫用で正当な批判も消えてしまう件</title>
+<meta name="description" content="批判の投稿が削除申請だけで消える問題と、双方が理由を示してから決めるサイトの構想。">
+<style>
+:root{
+  --ink:#222222; --sub:#6b6b6b; --line:#e6e6e6; --paper:#ffffff;
+  --red:#c8402f; --red-bg:#fdecea;
+  --green:#1f7a5c; --green-bg:#e3f4ec;
+  --mark-y:#fff1a8; --mark-g:#d6f0e3;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic","Noto Sans JP",Meiryo,sans-serif;
+  font-size:17px;line-height:1.95;letter-spacing:.02em}
+.topbar{border-bottom:1px solid var(--line);background:var(--paper)}
+.topbar div{max-width:640px;margin:0 auto;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1.5;color:var(--sub)}
+.topbar a{flex:none;color:var(--ink);font-weight:700;text-decoration:none;border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px}
+.topbar a:hover{background:var(--ink);color:#fff}
+.wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
+h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
+h2{font-size:24px;line-height:1.5;font-weight:700;margin:96px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+h3{font-size:19px;line-height:1.6;font-weight:700;margin:56px 0 14px;padding-left:12px;border-left:5px solid var(--ink)}
+p{margin:0 0 1.5em}
+a{color:inherit;text-decoration-color:#b5b5b5;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+mark{color:inherit;padding:0 .08em;background:linear-gradient(transparent 58%,var(--mark-y) 58%)}
+mark.g{background:linear-gradient(transparent 58%,var(--mark-g) 58%)}
+.toc{font-size:14.5px;color:var(--sub);margin:0 0 8px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px}
+.src{font-size:13px;color:var(--sub);margin-top:-.9em}
+.view{border-left:3px solid var(--line);padding-left:16px;color:#444}
+figure{margin:32px 0 36px}
+figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+.fignote{font-size:13px;color:var(--sub);margin:12px 0 0}
+
+/* 手順の流れ */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:22px}
+.flow li{position:relative;border-top:3px solid #cfcfcf;padding-top:10px;font-size:13.5px;line-height:1.65;color:#444}
+.flow li b{display:block;font-size:15.5px;color:var(--ink);margin-bottom:2px}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:-8px;right:-17px;width:0;height:0;border-style:solid;border-width:6.5px 0 6.5px 10px;border-color:transparent transparent transparent #8a8a8a}
+.flow li.bad{border-top-color:var(--red)} .flow li.bad b{color:var(--red)}
+.flow li.good{border-top-color:var(--green)} .flow li.good b{color:var(--green)}
+
+/* 二つの負担 */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pair div{font-size:15px;line-height:1.8}
+.pair svg{display:block;margin-bottom:8px}
+.pair b{display:block;font-size:16px;margin-bottom:2px}
+
+/* 図（SVG） */
+.diagram{display:block;width:100%;max-width:440px;margin:0 auto;height:auto}
+.diagram text{font-family:inherit}
+
+/* 三者 */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
+.roles h4{font-size:16px;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.roles dl{margin:0;font-size:14px;line-height:1.7}
+.roles dt{color:var(--sub);font-size:12.5px;margin-top:8px}
+.roles dd{margin:0}
+
+/* 決まりの一覧 */
+.rules{margin:0 0 1.5em;padding-left:1.4em}
+.rules li{margin-bottom:.35em}
+
+/* リスク */
+.risks{margin:0}
+.risks dt{font-weight:700;margin-top:18px}
+.risks dd{margin:2px 0 0;padding-left:16px;border-left:3px solid var(--green-bg);color:#444}
+
+.open{padding-left:1.2em;margin:0 0 1.5em}
+.open li{margin-bottom:.9em}
+.open b{display:block}
+.xpost{margin:8px 0 28px}
+.xpost .twitter-tweet{margin:0 auto}
+.xlink{font-size:14px}
+footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);line-height:1.8}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:32px 18px 72px}
+  .topbar div{padding:9px 18px;font-size:12.5px}
+  h1{font-size:25px} h2{font-size:21.5px;margin-top:72px} h3{font-size:17.5px;margin-top:46px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow li{border-top:0;border-left:3px solid #cfcfcf;padding:0 0 6px 16px;margin-bottom:26px;font-size:14px}
+  .flow li:last-child{margin-bottom:0}
+  .flow li.bad{border-left-color:var(--red)} .flow li.good{border-left-color:var(--green)}
+  .flow li:not(:last-child)::after{top:auto;bottom:-17px;left:-8px;right:auto;border-width:11px 6.5px 0 6.5px;border-color:#8a8a8a transparent transparent transparent}
+  .pair{grid-template-columns:1fr;gap:22px}
+  .roles{grid-template-columns:1fr;gap:20px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="person" viewBox="0 0 40 40"><circle cx="20" cy="13" r="7"/><path d="M6 38c0-10 6-15 14-15s14 5 14 15z"/></symbol>
+</svg>
+
+<header class="topbar"><div><span>構想段階のページです</span><a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">意見・要望はIssueへ</a></div></header>
+
+<main class="wrap">
+  <h1>GAHAKU社のDMCA濫用で正当な批判も消えてしまう件</h1>
+  <ul class="toc">
+    <li><a href="#now">起きていること</a></li>
+    <li><a href="#why">削除される理由</a></li>
+    <li><a href="#plan">構想しているサイト</a></li>
+    <li><a href="#open">決まっていないこと</a></li>
+  </ul>
+
+  <h2 id="now">起きていること</h2>
+  <p>堀大輔氏は「1日30分睡眠」を公言し、一般社団法人日本ショートスリーパー育成協会の代表理事として有料の睡眠改善プログラムを提供している実業家です。2026年8月以降、SNSでは堀氏の主張を疑問視する声が広がりました。なお、堀氏のYouTubeチャンネルの動画には、GAHAKU社（GAHAKU CO., LTD.）の著作権表示があります。</p>
+  <p class="src">出所: <a href="https://weekly.ascii.jp/elem/000/004/434/4434756/">週刊アスキー（2026年9月15日）</a></p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="ja" data-dnt="true"><p class="xlink"><a href="https://x.com/hogehogejptweet/status/2099382005985415569">Xの投稿を見る（@hogehogejptweet）</a></p></blockquote></div>
+  <p>しかし、堀氏への批判は読者に届きにくくなっています。まず、堀氏のYouTubeライブ配信では、堀氏を批判するコメントが削除されています。さらにXでは、元受講生などが提供した動画（講座本編の内容ではないもの）や、YouTubeライブの切り抜き動画を載せた投稿が削除されています。</p>
+  <p class="view">筆者は、これらの削除を、批判に答えずにDMCAを使って正当な批判を消す行為だと考えています。</p>
+  <div class="xpost"><blockquote class="twitter-tweet" data-lang="ja" data-dnt="true"><p class="xlink"><a href="https://x.com/taugu7711/status/2124442262360735834">Xの投稿を見る（@taugu7711）</a></p></blockquote></div>
+
+  <h2 id="why">削除される理由</h2>
+  <p>Xの投稿が申請だけで消える理由は二つあります。一つ目はDMCAの仕組みで、二つ目は日本に住む人が異議を出すときの負担です。</p>
+
+  <h3>DMCAの仕組み</h3>
+  <p>Xは米国の会社なので、米国のデジタルミレニアム著作権法（DMCA）に沿って削除の申請を扱います。DMCAは、申請を受けてすぐに削除した事業者、つまりXを、著作権侵害の責任から守る法律です。そのためXは、<mark>申請が正しいかどうかを確かめる前に投稿を削除します</mark>。</p>
+  <figure>
+    <figcaption>Xでの申請から削除、異議までの順序</figcaption>
+    <ol class="flow">
+      <li><b>申請</b>権利者を名乗る人がXに申請する</li>
+      <li class="bad"><b>削除</b>Xは申請が正しいかを確かめる前に投稿を消す</li>
+      <li><b>異議</b>投稿した人は消えたあとに異議を出せる</li>
+      <li><b>復活か裁判</b>申請した人が米国で提訴しなければ投稿は戻る</li>
+    </ol>
+    <p class="fignote">赤の「削除」は、投稿した人の言い分を聞く前に行われます。</p>
+  </figure>
+  <p>この仕組みを使って自分に都合の悪い情報を削除させる例があり、米国内でも問題視されています。</p>
+  <p class="src">出所: <a href="https://eff.org/deeplinks/2026/09/court-rules-against-citizen-journalists-dmca-takedown-case-eff-will-appeal">電子フロンティア財団（EFF）</a>、<a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h3>日本に住む人の負担</h3>
+  <p>もちろん、投稿を消された人は異議を出せます。しかし、日本に住む人は、異議を米国の手続きで出す必要があり、さらに削除を申請した人に自分の氏名と住所を伝える必要があります。</p>
+  <figure>
+    <div class="pair">
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><rect x="4" y="10" width="40" height="28" fill="none" stroke="#c8402f" stroke-width="2.5"/><circle cx="16" cy="21" r="4.5" fill="#c8402f"/><path d="M8 33c1-6 15-6 16 0z" fill="#c8402f"/><line x1="28" y1="19" x2="40" y2="19" stroke="#c8402f" stroke-width="2.5"/><line x1="28" y1="27" x2="38" y2="27" stroke="#c8402f" stroke-width="2.5"/></svg>
+        <b>氏名と住所が相手に伝わる</b>
+        異議を出す人は自分の氏名と住所を書く必要があり、書いた情報は削除を申請した人に伝わります。
+      </div>
+      <div>
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><path d="M6 18 L24 6 L42 18 z" fill="#c8402f"/><rect x="10" y="21" width="4" height="15" fill="#c8402f"/><rect x="22" y="21" width="4" height="15" fill="#c8402f"/><rect x="34" y="21" width="4" height="15" fill="#c8402f"/><rect x="5" y="38" width="38" height="4" fill="#c8402f"/></svg>
+        <b>米国の裁判に応じる必要がある</b>
+        異議を出す人は、米国の裁判所で争うことに同意する必要があります。申請した人が米国で提訴すると、応じる費用は個人には大きな負担です。
+      </div>
+    </div>
+  </figure>
+  <p>このため、投稿を消されても異議を出さない人が少なくありません。そして異議が出なければ、申請した人の主張が正しいかどうかは確かめられないままです。その結果、<mark>日本では米国以上に、削除を申請する側が有利な構造になっています</mark>。</p>
+  <p class="src">出所: <a href="https://nlab.itmedia.co.jp/cont/articles/3317243/">ねとらぼ</a>、<a href="https://pressgazette.co.uk/news/us-copyright-law-has-been-weaponised-to-silence-reporting-around-the-world/">Press Gazette</a></p>
+
+  <h2 id="plan">構想しているサイト</h2>
+  <p>そこで、まだ構想段階ですが、次のような仕組みがあれば公益に資するのではないかと、筆者は考えています。</p>
+
+  <h3>全体像</h3>
+  <p>構想しているサイトは、公益目的の検証や批判の記事を載せます。そして、記事に異議が出たときは、<mark class="g">申請だけで記事を消さず、双方の理由を聞いてから決めます</mark>。</p>
+  <figure>
+    <figcaption>構想しているサイトの全体像</figcaption>
+    <svg class="diagram" viewBox="0 0 360 372" role="img" aria-label="投稿者が記事を載せる。批判される側は削除の要請と反論を出し、サイトは異議をすぐに掲示して、運営者が理由つきで回答する。解決しないときは日本の裁判所が判断する。">
+      <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6b6b6b"/></marker></defs>
+      <use href="#person" x="45" y="4" width="34" height="34" fill="#222"/>
+      <text x="62" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">投稿者</text>
+      <text x="62" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">内容の責任を負う</text>
+      <use href="#person" x="281" y="4" width="34" height="34" fill="#222"/>
+      <text x="298" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#222">批判される側</text>
+      <text x="298" y="76" text-anchor="middle" font-size="11.5" fill="#6b6b6b">異議を出せる</text>
+
+      <line x1="62" y1="88" x2="62" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="72" y="124" font-size="12" fill="#222">記事を載せる</text>
+      <line x1="282" y1="88" x2="282" y2="150" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="272" y="116" text-anchor="end" font-size="12" fill="#222">削除の要請</text>
+      <text x="272" y="132" text-anchor="end" font-size="12" fill="#222">と反論</text>
+      <line x1="318" y1="150" x2="318" y2="88" stroke="#1f7a5c" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="326" y="116" font-size="11.5" fill="#1f7a5c">理由</text>
+      <text x="326" y="131" font-size="11.5" fill="#1f7a5c">つきの</text>
+      <text x="326" y="146" font-size="11.5" fill="#1f7a5c">回答</text>
+
+      <rect x="10" y="156" width="340" height="74" rx="6" fill="#e3f4ec"/>
+      <text x="180" y="188" text-anchor="middle" font-size="15" font-weight="700" fill="#1f7a5c">構想しているサイト</text>
+      <text x="180" y="210" text-anchor="middle" font-size="12" fill="#222">異議をすぐに掲示し、理由つきで回答する</text>
+
+      <line x1="180" y1="236" x2="180" y2="290" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="190" y="268" font-size="12" fill="#222">解決しないとき</text>
+      <rect x="70" y="296" width="220" height="66" rx="6" fill="none" stroke="#cfcfcf" stroke-width="1.5"/>
+      <text x="180" y="324" text-anchor="middle" font-size="14" font-weight="700" fill="#222">日本の裁判所</text>
+      <text x="180" y="345" text-anchor="middle" font-size="12" fill="#6b6b6b">記事を残すか消すかを判断する</text>
+    </svg>
+  </figure>
+  <p>この全体像は、次の四つの決まりで成り立ちます。以下では、この順に説明します。</p>
+  <ol class="rules">
+    <li>異議が出ても記事をすぐには消さず、異議を速やかに掲示する</li>
+    <li>掲載内容の責任は投稿者が負い、運営者は批判される側からお金を受け取らない</li>
+    <li>記事を期限なく載せ続けない</li>
+    <li>運営者は身元を明らかにし、日本の裁判所の判断に従う</li>
+  </ol>
+
+  <h3>決まり1　記事をすぐには消さず、異議を速やかに掲示する</h3>
+  <p>構想しているサイトでは、削除の申請がそのまま削除につながる仕組みをとりません。その代わりに、記事を消すかどうかを決める前に、異議がある人と記事を載せた人の双方が理由を示します。また、異議がある人は、削除の要請と同時に、サイトに掲載する反論も出せます。そして運営者は、記事を消すかどうかが決まる前に、<mark class="g">異議の内容を遅滞なく記事に掲示します</mark>。そのため読者は、批判と異議の両方を読めます。さらに、異議がある人が法的に争いたい場合は、運営者は開示の手続きに適切に応じます。</p>
+  <figure>
+    <figcaption>構想しているサイトで記事に異議が出たときの順序</figcaption>
+    <ol class="flow" style="--n:5">
+      <li><b>要請</b>異議がある人が、理由を添えて削除を求める。反論も一緒に出せる</li>
+      <li class="good"><b>異議の掲示</b>異議の内容が、遅滞なく記事に掲示される</li>
+      <li class="good"><b>理由のやり取り</b>記事はすぐには消えない。要請には期限内に理由つきの回答が返る</li>
+      <li><b>裁判</b>解決しなければ、日本の裁判所で争う</li>
+      <li><b>判断</b>裁判所の判断のとおりに記事を残すか消す</li>
+    </ol>
+    <p class="fignote">Xでは「削除」が2番目にありました。一方、構想しているサイトでは、緑の「異議の掲示」と「理由のやり取り」が削除より先にあります。</p>
+  </figure>
+
+  <h3>決まり2　責任とお金の分担</h3>
+  <p>次に、役割の分担です。構想しているサイトには、記事を載せる投稿者、サイトを維持する運営者、記事で批判される側の三者が関わります。このうち、掲載内容の責任は投稿者が負います。また、投稿者は投稿1件につき数千円程度を払います。この費用はいたずらを防ぐためのもので、運営費にあてます。一方で、<mark class="g">運営者は批判される側からお金を一切受け取りません</mark>。</p>
+  <figure>
+    <figcaption>三者のあいだのお金の流れ</figcaption>
+    <svg class="diagram" viewBox="0 0 360 124" role="img" aria-label="投稿者は運営者に数千円を払う。この費用はいたずらを防ぎ、運営費にあてる。運営者は批判される側からお金を受け取らない。">
+      <use href="#person" x="23" y="6" width="40" height="40" fill="#222"/>
+      <text x="43" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">投稿者</text>
+      <use href="#person" x="160" y="6" width="40" height="40" fill="#1f7a5c"/>
+      <text x="180" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1f7a5c">運営者</text>
+      <use href="#person" x="297" y="6" width="40" height="40" fill="#222"/>
+      <text x="317" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#222">批判される側</text>
+
+      <line x1="72" y1="26" x2="150" y2="26" stroke="#6b6b6b" stroke-width="1.5" marker-end="url(#ar)"/>
+      <text x="111" y="16" text-anchor="middle" font-size="11.5" fill="#222">数千円程度</text>
+      <line x1="288" y1="26" x2="210" y2="26" stroke="#c8402f" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M243 20 L255 32 M255 20 L243 32" stroke="#c8402f" stroke-width="2.2"/>
+      <text x="249" y="13" text-anchor="middle" font-size="11.5" fill="#c8402f">受け取らない</text>
+
+      <text x="111" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">いたずらを防ぎ、</text><text x="111" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">運営費にあてる</text>
+      <text x="249" y="100" text-anchor="middle" font-size="11.5" fill="#6b6b6b">削除・訂正・反論の</text>
+      <text x="249" y="116" text-anchor="middle" font-size="11.5" fill="#6b6b6b">掲載はすべて無料</text>
+    </svg>
+    <div class="roles">
+      <div>
+        <h4>投稿者</h4>
+        <dl>
+          <dt>すること</dt><dd>投稿のルールを守ると約束して投稿する</dd>
+          <dt>責任</dt><dd>掲載内容の責任を負う</dd>
+          <dt>名前</dt><dd>公開されない。ただし、法的な手続きがあれば運営者が開示する</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>運営者</h4>
+        <dl>
+          <dt>すること</dt><dd>サイトを維持し、削除の要請に回答し、掲載を見直す</dd>
+          <dt>責任</dt><dd>権利侵害を知ったあとの対応について責任を問われうる</dd>
+          <dt>名前</dt><dd>氏名か代理人弁護士の連絡先を公開する</dd>
+        </dl>
+      </div>
+      <div>
+        <h4>批判される側</h4>
+        <dl>
+          <dt>できること</dt><dd>削除の要請、反論や訂正の申し入れ</dd>
+          <dt>お金</dt><dd>一切かからない</dd>
+        </dl>
+      </div>
+    </div>
+  </figure>
+
+  <h3>決まり3　記事を期限なく載せ続けない</h3>
+  <p>一方で、批判の記事を期限なく載せ続けると、批判された人の不利益が大きくなります。筆者は、忘れられる権利も保護されるべきだと考えています。そこで運営者は、記事の掲載を続ける必要があるかを定期的に見直し、必要がなくなった記事を次の順で縮小します。</p>
+  <figure>
+    <figcaption>掲載を縮小する順序</figcaption>
+    <ol class="flow" style="--n:3">
+      <li><b>動画を外す</b>引用した動画などを記事から外す</li>
+      <li><b>検索に出さない</b>検索エンジンに表示させず、氏名を匿名にする</li>
+      <li><b>取り下げる</b>記事を取り下げる</li>
+    </ol>
+  </figure>
+
+  <h3>決まり4　身元を明らかにし、裁判所の判断に従う</h3>
+  <p>ただし、筆者は「告発資料が削除されないサイト」を作ろうとしているのではありません。また、投稿者の法的責任を避けることも目的にしていません。そのため、<mark class="g">運営者は身元を明らかにし、日本の裁判所の判断に従います</mark>。</p>
+
+  <h3>想定している運営者のリスク</h3>
+  <p>なお、構想しているサイトに載せる記事も、日本の法律に反すれば削除や賠償の対象になります。そこで、運営者が負う主なリスクと備えを次に示します。</p>
+  <dl class="risks">
+    <dt>動画の掲載が引用と認められず、著作権侵害になる</dt>
+    <dd>動画は検証に必要な部分だけを切り出す</dd>
+    <dt>記事の内容が名誉毀損やプライバシー侵害になる</dt>
+    <dd>公共性のある事実と論評だけを載せ、根拠資料を保存する</dd>
+    <dt>時間が経ち、掲載を続ける理由が弱くなる</dt>
+    <dd>掲載を定期的に見直し、段階的に縮小する</dd>
+    <dt>運営者が権利侵害を知ったあとも記事を放置する</dt>
+    <dd>削除の要請に期限内に理由つきで回答する</dd>
+  </dl>
+
+  <h2 id="open">決まっていないこと</h2>
+  <p>サイトはまだなく、設計を進めている段階です。そのため、次の論点はまだ決まっていません。筆者はこれらの論点について意見を募集しています。意見や要望は、<a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">GitHubのIssue</a>に書いてください。</p>
+  <ul class="open">
+    <li><b>投稿の事前確認の範囲</b>運営者が詳しく審査すればルール違反は減ります。しかし、掲載が運営者自身の行為と見なされやすくなります。</li>
+    <li><b>投稿費用の金額と方式</b>数千円でいたずらを防げるかが論点です。また、掲載後に返金する預かり金にする案もあります。</li>
+    <li><b>掲載を続ける基準と縮小する基準</b>見直しの頻度と、掲載期間に上限を設けるかが決まっていません。</li>
+    <li><b>非営利の組織にするか</b>組織にすれば収支と判断の記録を公開できます。ただし、設立と維持に手間と費用がかかります。いずれにしても、収支と運営の実態は、透明にする必要があります。</li>
+    <li><b>運営者の側から使う法的な手続き</b>相手が提訴しなければ裁判は始まりません。そのため、運営者から訴訟を起こすかが論点です。</li>
+    <li><b>異議を出す人の本人確認</b>異議を出した人が本人かどうかを、どう確かめるかが決まっていません。本人確認がなければ、他人が本人を名乗って削除を求めることができてしまいます。</li>
+    <li><b>投稿・異議の受け付けと支払いの実装方式</b>投稿者の個人情報と支払い情報、さらに異議を出す人の本人確認の情報を扱う必要があります。そこで、個人情報を扱っても、サイト自体には保管しない仕組みにできないかを検討しています。</li>
+    <li><b>サーバーとドメインを置く場所</b>プロバイダの介入で記事が損なわれないように、海外のサービスを使うべきかが論点です。海外のサービスを使えば、国内の事業者の判断による削除は避けやすくなります。しかし、海外の事業者も、権利侵害の通知を受けたあとに記事を放置すると、事業者自身が責任を問われます。そのため、海外の事業者も通知を受ければ記事を消すことがあります。つまり、海外に置いても削除を完全には避けられません。</li>
+  </ul>
+
+  <footer>
+    筆者 <a href="https://x.com/hogehogejptweet">hogehogejptweet</a>　第一版（2026年11月25日）<br>
+    このページは構想段階の内容です。法律に関する記述は弁護士の確認を受けていません。
+  </footer>
+</main>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
