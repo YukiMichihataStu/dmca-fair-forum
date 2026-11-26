@@ -103,6 +103,11 @@ o9b="「公益」と「公益目的」の定義", o9='構想しているサイ�
 o10b="過剰な攻撃や私刑にしない歯止め", o10='批判を載せる場は特定の人への過剰な攻撃や、ネット上の私刑の道具にもなりえます。筆者は問題のある行為をした人についてであっても、それをネットに載せること自体が行き過ぎになりうると考えています。そのため、いまの歯止めで足りるかが論点です。',
 o11b="運営者を置かない方式（別の方向）", o11='運営者という立場を置かず、サイトの設計図だけを公開して、設置したい人がそれぞれ設置する方式も検討しています。サーバーの事業者に止められても別のサイトが残る一方で、異議の掲示や削除を誰が行うかが決まらなくなります。',
 more="詳しく読む",
+ord_p='検討事項は12件あります。そこで、次の四つの段階に分け、前の段階から順に決めます。前の段階の結論が次の段階の材料になるためです。また、運営者を置く方式と置かない方式のどちらでも必要な論点を先に決め、誰が行うかで中身が変わる論点を最後に回します。', ord_cap='検討の順序と、各段階を終える目安', ord_goal='終える目安', ord_note='下の一覧はこの順に並べています。', ord_stage='段階',
+s1b='何を載せてよいか', s1='「公益」と「公益目的」の定義、過剰な攻撃や私刑にしない歯止め', s1g='載せてよい対象と、載せないものの一覧が書ける',
+s2b='載せたあとどう扱うか', s2='削除を決める手続き、異議を出す人の本人確認、掲載を続ける基準と縮小する基準', s2g='異議が出てから結論が出るまでの流れと、掲載を終える条件が書ける',
+s3b='誰が行うか', s3='運営者を置くか置かないか、サーバーとドメインを置く場所', s3g='前の二つの段階で決めた歯止めの一つひとつについて、実行する人が書ける',
+s4b='運営の実務', s4='記事の事前確認、受け付けと支払い、掲載費用、組織、運営者の側から起こす訴訟。前の段階で決めた方式に合わせて検討する', s4g='掲載のルールの下書きができ、弁護士に確認を頼める',
 )
 
 L["zh-tw"] = dict(
@@ -196,6 +201,11 @@ o9b="「公益」與「公益目的」的定義", o9='構想中的網站刊登�
 o10b="避免過度攻擊與私刑的機制", o10='刊登批評的場所，也可能成為對特定人士過度攻擊或網路私刑的工具。筆者認為，即使對象確實有不當行為，將其刊登在網路上本身也可能過當。因此，問題在於目前的機制是否足夠。',
 o11b="不設營運者的方式（另一個方向）", o11='筆者也在考慮不設營運者，只公開網站的設計圖，由想設置的人各自設置的方式。這樣即使伺服器業者中止服務，其他網站仍會留存；但另一方面，由誰刊登異議、由誰刪除，將無法確定。',
 more="詳細內容（日文）",
+ord_p='待討論事項共有12項。因此分為以下四個階段，從前面的階段依序決定，因為前一階段的結論是下一階段的依據。另外，先決定設置營運者與不設營運者兩種方式都需要的問題，會因由誰執行而改變內容的問題留到最後。', ord_cap='討論的順序，以及各階段完成的標準', ord_goal='完成標準', ord_note='以下清單依此順序排列。', ord_stage='階段',
+s1b='可以刊登什麼', s1='「公益」與「公益目的」的定義、避免過度攻擊與私刑的機制', s1g='能寫出可以刊登的對象與不刊登的內容',
+s2b='刊登後如何處理', s2='決定是否刪除的程序、提出異議者的身分確認、持續刊登與縮小刊登的標準', s2g='能寫出從提出異議到得出結論的流程，以及結束刊登的條件',
+s3b='由誰執行', s3='是否設置營運者、伺服器與網域的設置地點', s3g='對前兩個階段決定的每一項機制，都能寫出由誰執行',
+s4b='營運實務', s4='文章的事前確認、受理與付款、刊登費用、組織、由營運者一方提起的訴訟。依照前一階段決定的方式討論', s4g='完成刊登規則的草稿，可以請律師確認',
 )
 
 L["ko"] = dict(
@@ -289,6 +299,11 @@ o9b="‘공익’과 ‘공익 목적’의 정의", o9='구상 중인 사이트
 o10b="과도한 공격이나 사적 제재가 되지 않게 하는 장치", o10='비판을 싣는 곳은 특정인에 대한 과도한 공격이나 인터넷상의 사적 제재의 도구가 될 수도 있습니다. 필자는 문제가 있는 행위를 한 사람에 대한 것이라도, 그것을 인터넷에 올리는 것 자체가 지나칠 수 있다고 생각합니다. 그래서 지금의 장치로 충분한지가 논점입니다.',
 o11b="운영자를 두지 않는 방식(다른 방향)", o11='운영자라는 입장을 두지 않고 사이트의 설계도만 공개하여, 설치하고 싶은 사람이 각자 설치하는 방식도 검토하고 있습니다. 서버 사업자가 접속을 막아도 다른 사이트가 남는 한편, 이의의 게시나 삭제를 누가 할지가 정해지지 않게 됩니다.',
 more="자세히 보기(일본어)",
+ord_p='검토 사항은 12건입니다. 그래서 다음 네 단계로 나누어 앞 단계부터 차례로 정합니다. 앞 단계의 결론이 다음 단계의 재료가 되기 때문입니다. 또한 운영자를 두는 방식과 두지 않는 방식 모두에 필요한 논점을 먼저 정하고, 누가 하는지에 따라 내용이 달라지는 논점은 마지막으로 돌립니다.', ord_cap='검토 순서와 각 단계를 마치는 기준', ord_goal='마치는 기준', ord_note='아래 목록은 이 순서로 나열했습니다.', ord_stage='단계',
+s1b='무엇을 실어도 되는가', s1='‘공익’과 ‘공익 목적’의 정의, 과도한 공격이나 사적 제재가 되지 않게 하는 장치', s1g='실어도 되는 대상과 싣지 않는 것의 목록을 쓸 수 있다',
+s2b='실은 뒤 어떻게 다루는가', s2='삭제를 결정하는 절차, 이의를 내는 사람의 본인 확인, 게재를 계속하는 기준과 축소하는 기준', s2g='이의가 나온 뒤 결론이 날 때까지의 흐름과 게재를 끝내는 조건을 쓸 수 있다',
+s3b='누가 하는가', s3='운영자를 둘지 여부, 서버와 도메인을 두는 곳', s3g='앞의 두 단계에서 정한 장치 하나하나에 대해 실행하는 사람을 쓸 수 있다',
+s4b='운영 실무', s4='글의 사전 확인, 접수와 결제, 게재 비용, 조직, 운영자 쪽에서 내는 소송. 앞 단계에서 정한 방식에 맞추어 검토한다', s4g='게재 규칙의 초안이 완성되어 변호사에게 확인을 부탁할 수 있다',
 )
 
 L["de"] = dict(
@@ -382,4 +397,9 @@ o9b="Definition von „öffentlichem Interesse“", o9='Die geplante Website ver
 o10b="Schutz vor überzogenen Angriffen und Selbstjustiz", o10='Ein Ort für Kritik kann auch zum Werkzeug für überzogene Angriffe auf einzelne Personen oder für Selbstjustiz im Netz werden. Der Verfasser meint, dass schon die Veröffentlichung im Netz zu weit gehen kann, selbst wenn jemand tatsächlich etwas Falsches getan hat. Offen ist deshalb, ob die bisherigen Schutzregeln ausreichen.',
 o11b="Betrieb ohne Betreiber (andere Richtung)", o11='Geprüft wird auch ein Modell ohne Betreiber: Nur der Bauplan der Website wird veröffentlicht, und wer möchte, richtet selbst eine Website ein. Sperrt ein Hosting-Anbieter den Zugang, bleiben andere Websites bestehen. Offen wäre dann aber, wer Widersprüche veröffentlicht und wer löscht.',
 more="Details (Japanisch)",
+ord_p='Es gibt zwölf offene Punkte. Sie werden deshalb in vier Stufen geteilt und der Reihe nach entschieden, weil das Ergebnis einer Stufe die Grundlage der nächsten ist. Zuerst kommen die Punkte, die mit und ohne Betreiber nötig sind; Punkte, deren Inhalt davon abhängt, wer sie ausführt, kommen zuletzt.', ord_cap='Reihenfolge der Klärung und Abschlusskriterium jeder Stufe', ord_goal='Abgeschlossen, wenn', ord_note='Die folgende Liste ist in dieser Reihenfolge geordnet.', ord_stage='Stufe',
+s1b='Was veröffentlicht werden darf', s1='Definition von „öffentlichem Interesse“, Schutz vor überzogenen Angriffen und Selbstjustiz', s1g='feststeht, was veröffentlicht werden darf und was nicht',
+s2b='Umgang nach der Veröffentlichung', s2='Verfahren für die Löschentscheidung, Identitätsprüfung bei Widersprüchen, Kriterien für weitere und reduzierte Veröffentlichung', s2g='der Ablauf vom Widerspruch bis zum Ergebnis und die Bedingungen für das Ende der Veröffentlichung feststehen',
+s3b='Wer es ausführt', s3='Mit oder ohne Betreiber, Standort von Server und Domain', s3g='für jede Schutzregel der ersten beiden Stufen feststeht, wer sie ausführt',
+s4b='Praktischer Betrieb', s4='Vorabprüfung von Artikeln, Annahme und Zahlung, Gebühr, Organisationsform, Klagen vonseiten des Betreibers. Zu klären nach dem Modell, das in der vorigen Stufe gewählt wurde', s4g='ein Entwurf der Veröffentlichungsregeln vorliegt, den ein Anwalt prüfen kann',
 )

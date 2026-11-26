@@ -80,6 +80,15 @@ figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
 .open li{margin-bottom:.9em}
 .open b{display:block}
 .open .more{font-size:14px;color:var(--sub);white-space:nowrap}
+
+/* 検討の順序 */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{counter-increment:st;position:relative;padding:0 0 20px 44px;font-size:15px;line-height:1.8;color:#444}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:counter(st);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:14px;line-height:28px;text-align:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:13px;top:36px;bottom:4px;width:2px;background:var(--line)}
+.steps b{display:block;font-size:16.5px;color:var(--ink)}
+.steps .goal{display:block;font-size:13.5px;color:var(--green)}
 .xpost{margin:8px 0 28px}
 .xpost .twitter-tweet{margin:0 auto}
 .xlink{font-size:14px}
@@ -299,19 +308,30 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 
   <h2 id="open">«h_open»</h2>
   <p>«open_p»</p>
+  <p>«ord_p»</p>
+  <figure>
+    <figcaption>«ord_cap»</figcaption>
+    <ol class="steps">
+      <li><b>«s1b»</b>«s1»<span class="goal">«ord_goal»: «s1g»</span></li>
+      <li><b>«s2b»</b>«s2»<span class="goal">«ord_goal»: «s2g»</span></li>
+      <li><b>«s3b»</b>«s3»<span class="goal">«ord_goal»: «s3g»</span></li>
+      <li><b>«s4b»</b>«s4»<span class="goal">«ord_goal»: «s4g»</span></li>
+    </ol>
+    <p class="fignote">«ord_note»</p>
+  </figure>
   <ul class="open">
-    <li><b>«o0b»</b>«o0» <a class="more" href="«up»topics/deletion-decision.html">«more»</a></li>
-    <li><b>«o1b»</b>«o1» <a class="more" href="«up»topics/pre-review.html">«more»</a></li>
-    <li><b>«o2b»</b>«o2» <a class="more" href="«up»topics/fee.html">«more»</a></li>
-    <li><b>«o3b»</b>«o3» <a class="more" href="«up»topics/retention.html">«more»</a></li>
-    <li><b>«o4b»</b>«o4» <a class="more" href="«up»topics/organization.html">«more»</a></li>
-    <li><b>«o5b»</b>«o5» <a class="more" href="«up»topics/operator-litigation.html">«more»</a></li>
-    <li><b>«o6b»</b>«o6» <a class="more" href="«up»topics/identity-check.html">«more»</a></li>
-    <li><b>«o7b»</b>«o7» <a class="more" href="«up»topics/intake-privacy.html">«more»</a></li>
-    <li><b>«o8b»</b>«o8» <a class="more" href="«up»topics/hosting.html">«more»</a></li>
     <li><b>«o9b»</b>«o9» <a class="more" href="«up»topics/public-interest.html">«more»</a></li>
     <li><b>«o10b»</b>«o10» <a class="more" href="«up»topics/excess-and-vigilantism.html">«more»</a></li>
+    <li><b>«o0b»</b>«o0» <a class="more" href="«up»topics/deletion-decision.html">«more»</a></li>
+    <li><b>«o6b»</b>«o6» <a class="more" href="«up»topics/identity-check.html">«more»</a></li>
+    <li><b>«o3b»</b>«o3» <a class="more" href="«up»topics/retention.html">«more»</a></li>
     <li><b>«o11b»</b>«o11» <a class="more" href="«up»topics/no-operator.html">«more»</a></li>
+    <li><b>«o8b»</b>«o8» <a class="more" href="«up»topics/hosting.html">«more»</a></li>
+    <li><b>«o1b»</b>«o1» <a class="more" href="«up»topics/pre-review.html">«more»</a></li>
+    <li><b>«o7b»</b>«o7» <a class="more" href="«up»topics/intake-privacy.html">«more»</a></li>
+    <li><b>«o2b»</b>«o2» <a class="more" href="«up»topics/fee.html">«more»</a></li>
+    <li><b>«o4b»</b>«o4» <a class="more" href="«up»topics/organization.html">«more»</a></li>
+    <li><b>«o5b»</b>«o5» <a class="more" href="«up»topics/operator-litigation.html">«more»</a></li>
   </ul>
 
   <footer>

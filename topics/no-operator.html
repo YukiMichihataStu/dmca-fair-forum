@@ -79,6 +79,15 @@ figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
 .open li{margin-bottom:.9em}
 .open b{display:block}
 .open .more{font-size:14px;color:var(--sub);white-space:nowrap}
+
+/* 検討の順序 */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{counter-increment:st;position:relative;padding:0 0 20px 44px;font-size:15px;line-height:1.8;color:#444}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:counter(st);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:14px;line-height:28px;text-align:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:13px;top:36px;bottom:4px;width:2px;background:var(--line)}
+.steps b{display:block;font-size:16.5px;color:var(--ink)}
+.steps .goal{display:block;font-size:13.5px;color:var(--green)}
 .xpost{margin:8px 0 28px}
 .xpost .twitter-tweet{margin:0 auto}
 .xlink{font-size:14px}
@@ -134,7 +143,7 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 </div></header>
 
 <main class="wrap">
-  <p class="crumb">検討事項</p>
+  <p class="crumb">検討事項｜段階3 誰が行うか</p>
   <h1>運営者を置かない方式（別の方向）</h1>
   <p class="lead">運営者という立場を置かず、サイトの設計図だけを公開して、設置したい人がそれぞれ設置する方式を、別の方向として検討しています。</p>
   <p>きっかけはXで受けた二つの<a href="https://x.com/1oserz/status/2125569743507591169">指摘</a>です。一つ目は、削除の求めに実際に対応するのはサイトの運営者だけでなく、サーバーの事業者でもあるという指摘です。運営者が双方の理由を聞く方針でも、事業者がアクセスを止めれば記事は読めなくなります。二つ目は、裁判所の判断が出るまで掲載を続ける仕組みは、載せる側に有利すぎるのではないかという指摘です。</p>

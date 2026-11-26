@@ -79,6 +79,15 @@ figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
 .open li{margin-bottom:.9em}
 .open b{display:block}
 .open .more{font-size:14px;color:var(--sub);white-space:nowrap}
+
+/* 検討の順序 */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{counter-increment:st;position:relative;padding:0 0 20px 44px;font-size:15px;line-height:1.8;color:#444}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:counter(st);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:14px;line-height:28px;text-align:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:13px;top:36px;bottom:4px;width:2px;background:var(--line)}
+.steps b{display:block;font-size:16.5px;color:var(--ink)}
+.steps .goal{display:block;font-size:13.5px;color:var(--green)}
 .xpost{margin:8px 0 28px}
 .xpost .twitter-tweet{margin:0 auto}
 .xlink{font-size:14px}
@@ -134,7 +143,7 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 </div></header>
 
 <main class="wrap">
-  <p class="crumb">検討事項</p>
+  <p class="crumb">検討事項｜段階2 載せたあとどう扱うか</p>
   <h1>異議を出す人の本人確認</h1>
   <p class="lead">異議を出した人が、批判される側の本人かどうかを確かめる方法が決まっていません。本人確認がなければ、他人が本人を名乗って記事の削除を求めることができてしまいます。</p>
 

@@ -9,9 +9,19 @@ X_HOSTING = "https://x.com/1oserz/status/2125569743507591169"
 X_BLUEPRINT = "https://x.com/hogehogejptweet/status/2125576181382824077"
 X_NO_OPERATOR = "https://x.com/hogehogejptweet/status/2125577503674933685"
 
+# 検討の順序（概要ページの「検討事項」の四つの段階）。slug がどの段階に入るかを示す。
+STAGES = {
+    "public-interest": 1, "excess-and-vigilantism": 1,
+    "deletion-decision": 2, "identity-check": 2, "retention": 2,
+    "no-operator": 3, "hosting": 3,
+    "pre-review": 4, "intake-privacy": 4, "fee": 4, "organization": 4, "operator-litigation": 4,
+}
+
 LEAN = "いまの有力案"
 LEAN_NOTE = "次の案は、Issueに出ている案のうち筆者が有力だと考えているものです。まだ決定ではありません。"
 
+# TOPICS の並びは詳細ページを書き出す順で、画面の並びには影響しない。
+# 概要ページの一覧の並びは template.html が、段階は上の STAGES が決める。
 TOPICS = [
 dict(
 slug="deletion-decision", issue=10, title="削除を決める手続き",

@@ -35,7 +35,7 @@ for lang in ORDER:
 
 
 # 検討事項ごとの詳細ページ（日本語のみ）。文言は tools/topics.py に置く。
-from topics import TOPICS, ISSUES, LEAN, LEAN_NOTE
+from topics import TOPICS, ISSUES, LEAN, LEAN_NOTE, STAGES
 
 TOPIC_TPL = (ROOT / "tools" / "topic_template.html").read_text(encoding="utf-8")
 # 詳細ページは概要ページの CSS をそのまま使う。<style> 内に新しい «キー» を足したら、下の置き換えにも足す
@@ -52,6 +52,12 @@ TITLES = {t["slug"]: t["title"] for t in TOPICS}
 linked = re.findall(r"«up»topics/([a-z0-9-]+)\.html", TPL)
 if sorted(linked) != sorted(TITLES) or len(set(linked)) != len(linked):
     sys.exit("template.html のリンク先と topics.py の slug が一致しません: %s" % sorted(set(linked) ^ set(TITLES)))
+# 概要ページは「下の一覧はこの順に並べています」と書いているので、一覧の並びが段階の順とずれたら止める。
+if set(STAGES) != set(TITLES) or not set(STAGES.values()) <= {1, 2, 3, 4}:
+    sys.exit("topics.py の STAGES と TOPICS の slug が一致しないか、段階が1〜4の外です: %s" % sorted(set(STAGES) ^ set(TITLES)))
+order = [STAGES[s] for s in linked]
+if order != sorted(order):
+    sys.exit("template.html の検討事項の並びが、段階の順になっていません: %s" % order)
 
 
 def items(xs):
@@ -65,6 +71,7 @@ def paras(xs):
 for t in TOPICS:
     issue_url = "%s/%d" % (ISSUES, t["issue"])
     note = t.get("lean_note", LEAN_NOTE)
+    stage = STAGES[t["slug"]]
     d = {
         "css": CSS,
         "site_title": JA["title"],
@@ -73,7 +80,7 @@ for t in TOPICS:
         "back": "← 概要ページに戻る",
         "bar_issue": JA["bar_issue"],
         "issue_url": issue_url,
-        "h_open": JA["h_open"],
+        "crumb": "%s｜%s%d %s" % (JA["h_open"], JA["ord_stage"], stage, JA["s%db" % stage]),
         "lead": t["lead"],
         "more_p": paras(t.get("more_p", [])),
         "decided_h": t.get("decided_h", "いまの構想で決まっていること"),

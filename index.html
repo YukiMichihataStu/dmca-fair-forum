@@ -84,6 +84,15 @@ figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
 .open li{margin-bottom:.9em}
 .open b{display:block}
 .open .more{font-size:14px;color:var(--sub);white-space:nowrap}
+
+/* 検討の順序 */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{counter-increment:st;position:relative;padding:0 0 20px 44px;font-size:15px;line-height:1.8;color:#444}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:counter(st);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:14px;line-height:28px;text-align:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:13px;top:36px;bottom:4px;width:2px;background:var(--line)}
+.steps b{display:block;font-size:16.5px;color:var(--ink)}
+.steps .goal{display:block;font-size:13.5px;color:var(--green)}
 .xpost{margin:8px 0 28px}
 .xpost .twitter-tweet{margin:0 auto}
 .xlink{font-size:14px}
@@ -303,19 +312,30 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 
   <h2 id="open">検討事項</h2>
   <p>サイトはまだなく、設計を進めている段階です。そのため、次の論点はまだ決まっていません。筆者はこれらの論点について意見を募集しています。意見は、<a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">GitHubのIssue</a>に書いてください。</p>
+  <p>検討事項は12件あります。そこで、次の四つの段階に分け、前の段階から順に決めます。前の段階の結論が次の段階の材料になるためです。また、運営者を置く方式と置かない方式のどちらでも必要な論点を先に決め、誰が行うかで中身が変わる論点を最後に回します。</p>
+  <figure>
+    <figcaption>検討の順序と、各段階を終える目安</figcaption>
+    <ol class="steps">
+      <li><b>何を載せてよいか</b>「公益」と「公益目的」の定義、過剰な攻撃や私刑にしない歯止め<span class="goal">終える目安: 載せてよい対象と、載せないものの一覧が書ける</span></li>
+      <li><b>載せたあとどう扱うか</b>削除を決める手続き、異議を出す人の本人確認、掲載を続ける基準と縮小する基準<span class="goal">終える目安: 異議が出てから結論が出るまでの流れと、掲載を終える条件が書ける</span></li>
+      <li><b>誰が行うか</b>運営者を置くか置かないか、サーバーとドメインを置く場所<span class="goal">終える目安: 前の二つの段階で決めた歯止めの一つひとつについて、実行する人が書ける</span></li>
+      <li><b>運営の実務</b>記事の事前確認、受け付けと支払い、掲載費用、組織、運営者の側から起こす訴訟。前の段階で決めた方式に合わせて検討する<span class="goal">終える目安: 掲載のルールの下書きができ、弁護士に確認を頼める</span></li>
+    </ol>
+    <p class="fignote">下の一覧はこの順に並べています。</p>
+  </figure>
   <ul class="open">
-    <li><b>削除を決める手続き</b>異議が出た記事を削除するかどうかを、誰がどう決めるかが決まっていません。異議に回答するのは投稿者で、運営者は異議と回答を掲示するだけです。そのため、やり取りのあとで誰が結論を出すのかが決まっていません。また、投稿者が回答期限内に回答しない場合の扱いも決まっていません。なお、削除が決まった場合に、削除の操作をするのは運営者です。 <a class="more" href="topics/deletion-decision.html">詳しく読む</a></li>
-    <li><b>記事の事前確認の範囲</b>運営者が記事を詳しく審査すれば、掲載のルールへの違反は減ります。しかし、掲載が運営者自身の行為と見なされやすくなります。 <a class="more" href="topics/pre-review.html">詳しく読む</a></li>
-    <li><b>掲載費用の金額と方式</b>数千円程度でいたずらを防げるかが論点です。また、掲載後に返金する預かり金にする案もあります。 <a class="more" href="topics/fee.html">詳しく読む</a></li>
-    <li><b>掲載を続ける基準と縮小する基準</b>見直しを誰がどう行うか、見直しの頻度、掲載期間に上限を設けるかが決まっていません。 <a class="more" href="topics/retention.html">詳しく読む</a></li>
-    <li><b>非営利の組織にするか</b>組織にすれば、収支と運営者の判断の記録を公開できます。ただし、設立と維持に手間と費用がかかります。いずれにしても、収支と運営の実態は、透明にする必要があります。 <a class="more" href="topics/organization.html">詳しく読む</a></li>
-    <li><b>運営者の側から起こす訴訟</b>批判される側が提訴しなければ、裁判は始まりません。そのため、運営者の側から訴訟を起こすかが論点です。 <a class="more" href="topics/operator-litigation.html">詳しく読む</a></li>
-    <li><b>異議を出す人の本人確認</b>異議を出した人が、批判される側の本人かどうかを、どう確かめるかが決まっていません。本人確認がなければ、他人が本人を名乗って記事の削除を求めることができてしまいます。 <a class="more" href="topics/identity-check.html">詳しく読む</a></li>
-    <li><b>記事・異議の受け付けと支払いの実装方式</b>投稿者の個人情報と支払い情報、さらに異議を出す人の本人確認の情報を扱う必要があります。そこで、個人情報を扱っても、サイト自体には保管しない仕組みにできないかを検討しています。 <a class="more" href="topics/intake-privacy.html">詳しく読む</a></li>
-    <li><b>サーバーとドメインを置く場所</b>サーバーやドメインの事業者の介入で記事が損なわれないように、海外の事業者を使うべきかが論点です。海外の事業者を使えば、国内の事業者の判断による削除は避けやすくなります。しかし、海外の事業者も、権利侵害の通知（削除の求め）を受けたあとに記事を放置すると、事業者自身が責任を問われます。そのため、海外の事業者も通知を受ければ記事を削除することがあります。つまり、海外に置いても削除を完全には避けられません。 <a class="more" href="topics/hosting.html">詳しく読む</a></li>
     <li><b>「公益」と「公益目的」の定義</b>構想しているサイトは公益目的の検証や批判を載せます。しかし、「公益」と「公益目的」が何を指すかを、まだ定義していません。定義がなければ、どの記事を載せてよいかを投稿者も批判される側も事前に判断できません。 <a class="more" href="topics/public-interest.html">詳しく読む</a></li>
     <li><b>過剰な攻撃や私刑にしない歯止め</b>批判を載せる場は特定の人への過剰な攻撃や、ネット上の私刑の道具にもなりえます。筆者は問題のある行為をした人についてであっても、それをネットに載せること自体が行き過ぎになりうると考えています。そのため、いまの歯止めで足りるかが論点です。 <a class="more" href="topics/excess-and-vigilantism.html">詳しく読む</a></li>
+    <li><b>削除を決める手続き</b>異議が出た記事を削除するかどうかを、誰がどう決めるかが決まっていません。異議に回答するのは投稿者で、運営者は異議と回答を掲示するだけです。そのため、やり取りのあとで誰が結論を出すのかが決まっていません。また、投稿者が回答期限内に回答しない場合の扱いも決まっていません。なお、削除が決まった場合に、削除の操作をするのは運営者です。 <a class="more" href="topics/deletion-decision.html">詳しく読む</a></li>
+    <li><b>異議を出す人の本人確認</b>異議を出した人が、批判される側の本人かどうかを、どう確かめるかが決まっていません。本人確認がなければ、他人が本人を名乗って記事の削除を求めることができてしまいます。 <a class="more" href="topics/identity-check.html">詳しく読む</a></li>
+    <li><b>掲載を続ける基準と縮小する基準</b>見直しを誰がどう行うか、見直しの頻度、掲載期間に上限を設けるかが決まっていません。 <a class="more" href="topics/retention.html">詳しく読む</a></li>
     <li><b>運営者を置かない方式（別の方向）</b>運営者という立場を置かず、サイトの設計図だけを公開して、設置したい人がそれぞれ設置する方式も検討しています。サーバーの事業者に止められても別のサイトが残る一方で、異議の掲示や削除を誰が行うかが決まらなくなります。 <a class="more" href="topics/no-operator.html">詳しく読む</a></li>
+    <li><b>サーバーとドメインを置く場所</b>サーバーやドメインの事業者の介入で記事が損なわれないように、海外の事業者を使うべきかが論点です。海外の事業者を使えば、国内の事業者の判断による削除は避けやすくなります。しかし、海外の事業者も、権利侵害の通知（削除の求め）を受けたあとに記事を放置すると、事業者自身が責任を問われます。そのため、海外の事業者も通知を受ければ記事を削除することがあります。つまり、海外に置いても削除を完全には避けられません。 <a class="more" href="topics/hosting.html">詳しく読む</a></li>
+    <li><b>記事の事前確認の範囲</b>運営者が記事を詳しく審査すれば、掲載のルールへの違反は減ります。しかし、掲載が運営者自身の行為と見なされやすくなります。 <a class="more" href="topics/pre-review.html">詳しく読む</a></li>
+    <li><b>記事・異議の受け付けと支払いの実装方式</b>投稿者の個人情報と支払い情報、さらに異議を出す人の本人確認の情報を扱う必要があります。そこで、個人情報を扱っても、サイト自体には保管しない仕組みにできないかを検討しています。 <a class="more" href="topics/intake-privacy.html">詳しく読む</a></li>
+    <li><b>掲載費用の金額と方式</b>数千円程度でいたずらを防げるかが論点です。また、掲載後に返金する預かり金にする案もあります。 <a class="more" href="topics/fee.html">詳しく読む</a></li>
+    <li><b>非営利の組織にするか</b>組織にすれば、収支と運営者の判断の記録を公開できます。ただし、設立と維持に手間と費用がかかります。いずれにしても、収支と運営の実態は、透明にする必要があります。 <a class="more" href="topics/organization.html">詳しく読む</a></li>
+    <li><b>運営者の側から起こす訴訟</b>批判される側が提訴しなければ、裁判は始まりません。そのため、運営者の側から訴訟を起こすかが論点です。 <a class="more" href="topics/operator-litigation.html">詳しく読む</a></li>
   </ul>
 
   <footer>

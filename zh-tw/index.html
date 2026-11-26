@@ -84,6 +84,15 @@ figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
 .open li{margin-bottom:.9em}
 .open b{display:block}
 .open .more{font-size:14px;color:var(--sub);white-space:nowrap}
+
+/* 検討の順序 */
+.steps{list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{counter-increment:st;position:relative;padding:0 0 20px 44px;font-size:15px;line-height:1.8;color:#444}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:counter(st);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:14px;line-height:28px;text-align:center}
+.steps li:not(:last-child)::after{content:"";position:absolute;left:13px;top:36px;bottom:4px;width:2px;background:var(--line)}
+.steps b{display:block;font-size:16.5px;color:var(--ink)}
+.steps .goal{display:block;font-size:13.5px;color:var(--green)}
 .xpost{margin:8px 0 28px}
 .xpost .twitter-tweet{margin:0 auto}
 .xlink{font-size:14px}
@@ -303,19 +312,30 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 
   <h2 id="open">待討論事項</h2>
   <p>網站尚未建立，目前還在設計階段。因此，以下幾點尚未決定。筆者正在徵求對這些問題的意見。意見和建議請寫在<a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">GitHub的Issue</a>。</p>
+  <p>待討論事項共有12項。因此分為以下四個階段，從前面的階段依序決定，因為前一階段的結論是下一階段的依據。另外，先決定設置營運者與不設營運者兩種方式都需要的問題，會因由誰執行而改變內容的問題留到最後。</p>
+  <figure>
+    <figcaption>討論的順序，以及各階段完成的標準</figcaption>
+    <ol class="steps">
+      <li><b>可以刊登什麼</b>「公益」與「公益目的」的定義、避免過度攻擊與私刑的機制<span class="goal">完成標準: 能寫出可以刊登的對象與不刊登的內容</span></li>
+      <li><b>刊登後如何處理</b>決定是否刪除的程序、提出異議者的身分確認、持續刊登與縮小刊登的標準<span class="goal">完成標準: 能寫出從提出異議到得出結論的流程，以及結束刊登的條件</span></li>
+      <li><b>由誰執行</b>是否設置營運者、伺服器與網域的設置地點<span class="goal">完成標準: 對前兩個階段決定的每一項機制，都能寫出由誰執行</span></li>
+      <li><b>營運實務</b>文章的事前確認、受理與付款、刊登費用、組織、由營運者一方提起的訴訟。依照前一階段決定的方式討論<span class="goal">完成標準: 完成刊登規則的草稿，可以請律師確認</span></li>
+    </ol>
+    <p class="fignote">以下清單依此順序排列。</p>
+  </figure>
   <ul class="open">
-    <li><b>決定是否刪除的程序</b>遭到異議的文章是否刪除，由誰、以什麼方式決定，目前尚未決定。回覆異議的是投稿者，營運者只刊登異議與回覆。因此，雙方交換理由之後由誰做出結論，尚未決定。另外，投稿者未在回覆期限內回覆時如何處理，也尚未決定。一旦決定刪除，執行刪除操作的是營運者。 <a class="more" href="../topics/deletion-decision.html">詳細內容（日文）</a></li>
-    <li><b>文章的事前確認範圍</b>營運者審查文章越仔細，違反刊登規則的情況就越少。但是，刊登也越容易被視為營運者自己的行為。 <a class="more" href="../topics/pre-review.html">詳細內容（日文）</a></li>
-    <li><b>刊登費用的金額與方式</b>問題在於數千日圓左右是否足以防止惡作劇。另外，也有改採刊登後退還的保證金的方案。 <a class="more" href="../topics/fee.html">詳細內容（日文）</a></li>
-    <li><b>繼續刊登與縮小的標準</b>由誰、以什麼方式進行檢視，檢視的頻率，以及是否為刊登期間設定上限，都尚未決定。 <a class="more" href="../topics/retention.html">詳細內容（日文）</a></li>
-    <li><b>是否成立非營利組織</b>成立組織的話，可以公開收支與營運者判斷的紀錄。但是，設立和維持需要人力與費用。無論如何，收支與營運的實際情況都必須透明。 <a class="more" href="../topics/organization.html">詳細內容（日文）</a></li>
-    <li><b>由營運者一方提起的訴訟</b>被批評的一方不提告，訴訟就不會開始。因此，問題在於是否由營運者一方提起訴訟。 <a class="more" href="../topics/operator-litigation.html">詳細內容（日文）</a></li>
-    <li><b>提出異議者的身分確認</b>如何確認提出異議的人是否為被批評的本人，尚未決定。如果沒有身分確認，他人就可以冒用本人名義要求刪除文章。 <a class="more" href="../topics/identity-check.html">詳細內容（日文）</a></li>
-    <li><b>受理文章、異議與付款的實作方式</b>必須處理投稿者的個人資料與付款資訊，以及提出異議者的身分確認資訊。因此，筆者正在研究，能否做到即使處理個人資料，網站本身也不加以保存。 <a class="more" href="../topics/intake-privacy.html">詳細內容（日文）</a></li>
-    <li><b>伺服器與網域的設置地點</b>問題在於，為了避免文章因伺服器或網域業者的介入而受損，是否應該使用海外的業者。使用海外的業者，比較容易避免因國內業者的判斷而被刪除。但是，海外的業者在收到侵權通知（刪除的要求）後如果放任文章不處理，業者自己也會被追究責任。因此，海外的業者收到通知後也可能刪除文章。也就是說，即使放在海外，也無法完全避免被刪除。 <a class="more" href="../topics/hosting.html">詳細內容（日文）</a></li>
     <li><b>「公益」與「公益目的」的定義</b>構想中的網站刊登以公益為目的的查證與批評。但是，「公益」與「公益目的」所指為何，目前尚未定義。沒有定義，投稿者與被批評的一方都無法事先判斷哪些文章可以刊登。 <a class="more" href="../topics/public-interest.html">詳細內容（日文）</a></li>
     <li><b>避免過度攻擊與私刑的機制</b>刊登批評的場所，也可能成為對特定人士過度攻擊或網路私刑的工具。筆者認為，即使對象確實有不當行為，將其刊登在網路上本身也可能過當。因此，問題在於目前的機制是否足夠。 <a class="more" href="../topics/excess-and-vigilantism.html">詳細內容（日文）</a></li>
+    <li><b>決定是否刪除的程序</b>遭到異議的文章是否刪除，由誰、以什麼方式決定，目前尚未決定。回覆異議的是投稿者，營運者只刊登異議與回覆。因此，雙方交換理由之後由誰做出結論，尚未決定。另外，投稿者未在回覆期限內回覆時如何處理，也尚未決定。一旦決定刪除，執行刪除操作的是營運者。 <a class="more" href="../topics/deletion-decision.html">詳細內容（日文）</a></li>
+    <li><b>提出異議者的身分確認</b>如何確認提出異議的人是否為被批評的本人，尚未決定。如果沒有身分確認，他人就可以冒用本人名義要求刪除文章。 <a class="more" href="../topics/identity-check.html">詳細內容（日文）</a></li>
+    <li><b>繼續刊登與縮小的標準</b>由誰、以什麼方式進行檢視，檢視的頻率，以及是否為刊登期間設定上限，都尚未決定。 <a class="more" href="../topics/retention.html">詳細內容（日文）</a></li>
     <li><b>不設營運者的方式（另一個方向）</b>筆者也在考慮不設營運者，只公開網站的設計圖，由想設置的人各自設置的方式。這樣即使伺服器業者中止服務，其他網站仍會留存；但另一方面，由誰刊登異議、由誰刪除，將無法確定。 <a class="more" href="../topics/no-operator.html">詳細內容（日文）</a></li>
+    <li><b>伺服器與網域的設置地點</b>問題在於，為了避免文章因伺服器或網域業者的介入而受損，是否應該使用海外的業者。使用海外的業者，比較容易避免因國內業者的判斷而被刪除。但是，海外的業者在收到侵權通知（刪除的要求）後如果放任文章不處理，業者自己也會被追究責任。因此，海外的業者收到通知後也可能刪除文章。也就是說，即使放在海外，也無法完全避免被刪除。 <a class="more" href="../topics/hosting.html">詳細內容（日文）</a></li>
+    <li><b>文章的事前確認範圍</b>營運者審查文章越仔細，違反刊登規則的情況就越少。但是，刊登也越容易被視為營運者自己的行為。 <a class="more" href="../topics/pre-review.html">詳細內容（日文）</a></li>
+    <li><b>受理文章、異議與付款的實作方式</b>必須處理投稿者的個人資料與付款資訊，以及提出異議者的身分確認資訊。因此，筆者正在研究，能否做到即使處理個人資料，網站本身也不加以保存。 <a class="more" href="../topics/intake-privacy.html">詳細內容（日文）</a></li>
+    <li><b>刊登費用的金額與方式</b>問題在於數千日圓左右是否足以防止惡作劇。另外，也有改採刊登後退還的保證金的方案。 <a class="more" href="../topics/fee.html">詳細內容（日文）</a></li>
+    <li><b>是否成立非營利組織</b>成立組織的話，可以公開收支與營運者判斷的紀錄。但是，設立和維持需要人力與費用。無論如何，收支與營運的實際情況都必須透明。 <a class="more" href="../topics/organization.html">詳細內容（日文）</a></li>
+    <li><b>由營運者一方提起的訴訟</b>被批評的一方不提告，訴訟就不會開始。因此，問題在於是否由營運者一方提起訴訟。 <a class="more" href="../topics/operator-litigation.html">詳細內容（日文）</a></li>
   </ul>
 
   <footer>
