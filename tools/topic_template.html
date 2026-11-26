@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>«title»｜«site_title»</title>
+<meta name="description" content="«desc»">
+<style>
+«css»
+.crumb{font-size:14px;color:var(--sub);margin:0 0 20px}
+.lead{font-size:18px;line-height:1.9}
+.wrap h2{font-size:21px;margin:64px 0 20px}
+.list{padding-left:1.3em;margin:0 0 1.5em}
+.list li{margin-bottom:.5em}
+.opts{list-style:none;margin:0 0 1.5em;padding:0;counter-reset:opt}
+.opts>li{counter-increment:opt;border-top:1px solid var(--line);padding:18px 0 4px}
+.opts>li:last-child{border-bottom:1px solid var(--line);padding-bottom:18px}
+.opts h3{font-size:17px;margin:0 0 10px;padding:0;border:0}
+.opts h3::before{content:"案" counter(opt) "\3000";color:var(--sub);font-weight:400}
+.opts dl{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:6px 12px;font-size:15.5px;line-height:1.8}
+.opts dt{font-weight:700}
+.opts dt.good{color:var(--green)} .opts dt.bad{color:var(--red)}
+.opts dd{margin:0}
+.note{font-size:14px;color:var(--sub)}
+.related{list-style:none;margin:0 0 1.5em;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:15.5px}
+.ask{margin-top:48px;padding:18px 20px;background:var(--green-bg);font-size:15.5px}
+.ask a{font-weight:700}
+@media (max-width:600px){
+  .lead{font-size:16.5px}
+  .wrap h2{font-size:19px;margin-top:52px}
+  .opts dl{grid-template-columns:1fr;gap:2px}
+  .opts dd{margin-bottom:8px}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div>
+  <a href="../#open">«back»</a>
+  <span class="acts">
+    <a href="«issue_url»">«bar_issue»</a>
+  </span>
+</div></header>
+
+<main class="wrap">
+  <p class="crumb">«h_open»</p>
+  <h1>«title»</h1>
+  <p class="lead">«lead»</p>
+«more_p»
+  <h2>«decided_h»</h2>
+  <ul class="list">
+«decided»
+  </ul>
+
+  <h2>«undecided_h»</h2>
+  <ul class="list">
+«undecided»
+  </ul>
+
+  <h2>«options_h»</h2>
+  <ol class="opts">
+«options»
+  </ol>
+
+  <h2>«lean_h»</h2>
+«lean_note»
+  <p>«lean_p»</p>
+  <ul class="list">
+«lean_items»
+  </ul>
+«lean_after»
+  <h2>«rest_h»</h2>
+  <p>«rest»</p>
+
+  <h2>«related_h»</h2>
+  <ul class="related">
+«related»
+  </ul>
+
+  <p class="ask">«ask»</p>
+
+  <footer>
+    «foot1»<br>
+    «foot2»
+  </footer>
+</main>
+</body>
+</html>

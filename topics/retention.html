@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>掲載を続ける基準と縮小する基準｜GAHAKU社のDMCA濫用で正当な批判も消えてしまう件</title>
+<meta name="description" content="記事の掲載を続けるか縮小するかを、誰がどんな基準で見直すかが決まっていません。">
+<style>
+:root{
+  --ink:#222222; --sub:#6b6b6b; --line:#e6e6e6; --paper:#ffffff;
+  --red:#c8402f; --red-bg:#fdecea;
+  --green:#1f7a5c; --green-bg:#e3f4ec;
+  --mark-y:#fff1a8; --mark-g:#d6f0e3;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic","Noto Sans JP",Meiryo,sans-serif;
+  font-size:17px;line-height:1.95;letter-spacing:.02em}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.topbar>div{max-width:640px;margin:0 auto;padding:0 20px;height:40px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1}
+.topbar select{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;max-width:7.5em;cursor:pointer}
+.topbar .acts{display:flex;align-items:center;gap:16px;white-space:nowrap}
+.topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:4px}
+.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-decoration-color:#b5b5b5;text-underline-offset:4px}
+.topbar a:focus-visible,.topbar button:focus-visible,.topbar select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+h2,h3{scroll-margin-top:56px}
+.wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
+h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
+h2{font-size:24px;line-height:1.5;font-weight:700;margin:96px 0 24px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+h3{font-size:19px;line-height:1.6;font-weight:700;margin:56px 0 14px;padding-left:12px;border-left:5px solid var(--ink)}
+p{margin:0 0 1.5em}
+a{color:inherit;text-decoration-color:#b5b5b5;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+mark{color:inherit;padding:0 .08em;background:linear-gradient(transparent 58%,var(--mark-y) 58%)}
+mark.g{background:linear-gradient(transparent 58%,var(--mark-g) 58%)}
+.toc{font-size:14.5px;color:var(--sub);margin:0 0 8px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px}
+.src{font-size:13px;color:var(--sub);margin-top:-.9em}
+.view{border-left:3px solid var(--line);padding-left:16px;color:#444}
+figure{margin:32px 0 36px}
+figcaption{font-size:13.5px;color:var(--sub);margin-bottom:14px}
+.fignote{font-size:13px;color:var(--sub);margin:12px 0 0}
+
+/* 手順の流れ */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:22px}
+.flow li{position:relative;border-top:3px solid #cfcfcf;padding-top:10px;font-size:13.5px;line-height:1.65;color:#444}
+.flow li b{display:block;font-size:15.5px;color:var(--ink);margin-bottom:2px}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:-8px;right:-17px;width:0;height:0;border-style:solid;border-width:6.5px 0 6.5px 10px;border-color:transparent transparent transparent #8a8a8a}
+.flow li.bad{border-top-color:var(--red)} .flow li.bad b{color:var(--red)}
+.flow li.good{border-top-color:var(--green)} .flow li.good b{color:var(--green)}
+
+/* 二つの負担 */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pair div{font-size:15px;line-height:1.8}
+.pair svg{display:block;margin-bottom:8px}
+.pair b{display:block;font-size:16px;margin-bottom:2px}
+
+/* 図（SVG） */
+.diagram{display:block;width:100%;max-width:440px;margin:0 auto;height:auto}
+.diagram text{font-family:inherit}
+
+/* 三者 */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:22px}
+.roles h4{font-size:16px;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.roles dl{margin:0;font-size:14px;line-height:1.7}
+.roles dt{color:var(--sub);font-size:12.5px;margin-top:8px}
+.roles dd{margin:0}
+
+/* 決まりの一覧 */
+.rules{margin:0 0 1.5em;padding-left:1.4em}
+.rules li{margin-bottom:.35em}
+
+/* リスク */
+.risks{margin:0}
+.risks dt{font-weight:700;margin-top:18px}
+.risks dd{margin:2px 0 0;padding-left:16px;border-left:3px solid var(--green-bg);color:#444}
+
+.open{padding-left:1.2em;margin:0 0 1.5em}
+.open li{margin-bottom:.9em}
+.open b{display:block}
+.open .more{font-size:14px;color:var(--sub);white-space:nowrap}
+.xpost{margin:8px 0 28px}
+.xpost .twitter-tweet{margin:0 auto}
+.xlink{font-size:14px}
+footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--sub);line-height:1.8}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:32px 18px 72px}
+  .topbar>div{padding:0 18px;font-size:12.5px;gap:8px}
+  .topbar .acts{gap:12px}
+  h1{font-size:25px} h2{font-size:21.5px;margin-top:72px} h3{font-size:17.5px;margin-top:46px}
+  .flow{grid-template-columns:1fr;gap:0}
+  .flow li{border-top:0;border-left:3px solid #cfcfcf;padding:0 0 6px 16px;margin-bottom:26px;font-size:14px}
+  .flow li:last-child{margin-bottom:0}
+  .flow li.bad{border-left-color:var(--red)} .flow li.good{border-left-color:var(--green)}
+  .flow li:not(:last-child)::after{top:auto;bottom:-17px;left:-8px;right:auto;border-width:11px 6.5px 0 6.5px;border-color:#8a8a8a transparent transparent transparent}
+  .pair{grid-template-columns:1fr;gap:22px}
+  .roles{grid-template-columns:1fr;gap:20px}
+}
+
+.crumb{font-size:14px;color:var(--sub);margin:0 0 20px}
+.lead{font-size:18px;line-height:1.9}
+.wrap h2{font-size:21px;margin:64px 0 20px}
+.list{padding-left:1.3em;margin:0 0 1.5em}
+.list li{margin-bottom:.5em}
+.opts{list-style:none;margin:0 0 1.5em;padding:0;counter-reset:opt}
+.opts>li{counter-increment:opt;border-top:1px solid var(--line);padding:18px 0 4px}
+.opts>li:last-child{border-bottom:1px solid var(--line);padding-bottom:18px}
+.opts h3{font-size:17px;margin:0 0 10px;padding:0;border:0}
+.opts h3::before{content:"案" counter(opt) "\3000";color:var(--sub);font-weight:400}
+.opts dl{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:6px 12px;font-size:15.5px;line-height:1.8}
+.opts dt{font-weight:700}
+.opts dt.good{color:var(--green)} .opts dt.bad{color:var(--red)}
+.opts dd{margin:0}
+.note{font-size:14px;color:var(--sub)}
+.related{list-style:none;margin:0 0 1.5em;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:15.5px}
+.ask{margin-top:48px;padding:18px 20px;background:var(--green-bg);font-size:15.5px}
+.ask a{font-weight:700}
+@media (max-width:600px){
+  .lead{font-size:16.5px}
+  .wrap h2{font-size:19px;margin-top:52px}
+  .opts dl{grid-template-columns:1fr;gap:2px}
+  .opts dd{margin-bottom:8px}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div>
+  <a href="../#open">← 概要ページに戻る</a>
+  <span class="acts">
+    <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues/3">意見はIssueへ</a>
+  </span>
+</div></header>
+
+<main class="wrap">
+  <p class="crumb">検討事項</p>
+  <h1>掲載を続ける基準と縮小する基準</h1>
+  <p class="lead">記事の掲載を続けるか縮小するかを、誰がどんな基準で見直すかが決まっていません。</p>
+
+  <h2>いまの構想で決まっていること</h2>
+  <ul class="list">
+    <li>記事を期限なく載せ続けません。批判の記事を載せ続けると、批判される側の不利益が大きくなるためです。</li>
+    <li>必要がなくなった記事は、動画を外す、検索に出さない、取り下げる、の順で縮小します。</li>
+    <li>縮小が決まった場合に、その操作をするのは運営者です。</li>
+  </ul>
+
+  <h2>決まっていないこと</h2>
+  <ul class="list">
+    <li>見直しを誰が行うか</li>
+    <li>見直しの頻度</li>
+    <li>掲載を続ける基準</li>
+    <li>掲載期間に上限を設けるか</li>
+  </ul>
+
+  <h2>案の比較</h2>
+  <ol class="opts">
+    <li><h3>運営者が定期的に見直して決める</h3><dl><dt class="good">よい点</dt><dd>記事ごとの事情を見られます。</dd><dt class="bad">困る点</dt><dd>運営者が中身を判断することになります。</dd></dl></li>
+    <li><h3>掲載期間に上限を設け、延長しない</h3><dl><dt class="good">よい点</dt><dd>批判される側の不利益が確実に減り、判断が要りません。</dd><dt class="bad">困る点</dt><dd>対象者が活動を続けていても掲載が終わります。</dd></dl></li>
+    <li><h3>掲載期間を決め、投稿者が理由を示して更新を申請する</h3><dl><dt class="good">よい点</dt><dd>運営者は中身を判断しません。掲載を続ける理由を投稿者が示します。</dd><dt class="bad">困る点</dt><dd>投稿者と連絡が取れなくなると、必要な記事も終わります。</dd></dl></li>
+  </ol>
+
+  <h2>いまの有力案</h2>
+  <p class="note">次の案は、Issueに出ている案のうち筆者が有力だと考えているものです。まだ決定ではありません。</p>
+
+  <p>有力なのは、掲載期間を決めて投稿者が更新を申請する案です。内容は次のとおりです。</p>
+  <ul class="list">
+    <li>掲載期間は12か月。更新の申請がなければ、動画を外す、検索に出さない、取り下げる、の順で縮小する</li>
+    <li>更新の基準は、対象者が検証対象の活動を続けていること。投稿者がその根拠を示す</li>
+    <li>更新の申請は批判される側に伝え、批判される側は異議を出せる</li>
+    <li>対象者が活動をやめた場合は、やめた時点から一定期間で縮小を始める</li>
+  </ul>
+
+  <h2>残る課題</h2>
+  <p>更新の回数に上限を設けるかどうかが決まっていません。</p>
+
+  <h2>関連する検討事項</h2>
+  <ul class="related">
+    <li><a href="deletion-decision.html">削除を決める手続き</a></li>
+    <li><a href="excess-and-vigilantism.html">過剰な攻撃や私刑にしない歯止め</a></li>
+    <li><a href="no-operator.html">運営者を置かない方式（別の方向）</a></li>
+  </ul>
+
+  <p class="ask">この検討事項への意見は、<a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues/3">GitHubのIssue 3番</a>に書いてください。</p>
+
+  <footer>
+    筆者 <a href="https://x.com/hogehogejptweet">hogehogejptweet</a>　第二版（2026年11月27日）<br>
+    このページは構想段階の内容です。法律に関する記述は弁護士の確認を受けていません。
+  </footer>
+</main>
+</body>
+</html>

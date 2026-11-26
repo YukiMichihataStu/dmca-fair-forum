@@ -97,8 +97,12 @@ o5b='運営者の側から起こす訴訟', o5='批判される側が提訴し�
 o6b='異議を出す人の本人確認', o6='異議を出した人が、批判される側の本人かどうかを、どう確かめるかが決まっていません。本人確認がなければ、他人が本人を名乗って記事の削除を求めることができてしまいます。',
 o7b='記事・異議の受け付けと支払いの実装方式', o7='投稿者の個人情報と支払い情報、さらに異議を出す人の本人確認の情報を扱う必要があります。そこで、個人情報を扱っても、サイト自体には保管しない仕組みにできないかを検討しています。',
 o8b="サーバーとドメインを置く場所", o8='サーバーやドメインの事業者の介入で記事が損なわれないように、海外の事業者を使うべきかが論点です。海外の事業者を使えば、国内の事業者の判断による削除は避けやすくなります。しかし、海外の事業者も、権利侵害の通知（削除の求め）を受けたあとに記事を放置すると、事業者自身が責任を問われます。そのため、海外の事業者も通知を受ければ記事を削除することがあります。つまり、海外に置いても削除を完全には避けられません。',
-foot1=f'筆者 <a href="{XME}">hogehogejptweet</a>　第一版（2026年11月25日）',
+foot1=f'筆者 <a href="{XME}">hogehogejptweet</a>　第二版（2026年11月27日）',
 foot2="このページは構想段階の内容です。法律に関する記述は弁護士の確認を受けていません。",
+o9b="「公益」と「公益目的」の定義", o9='構想しているサイトは公益目的の検証や批判を載せます。しかし、「公益」と「公益目的」が何を指すかを、まだ定義していません。定義がなければ、どの記事を載せてよいかを投稿者も批判される側も事前に判断できません。',
+o10b="過剰な攻撃や私刑にしない歯止め", o10='批判を載せる場は特定の人への過剰な攻撃や、ネット上の私刑の道具にもなりえます。筆者は問題のある行為をした人についてであっても、それをネットに載せること自体が行き過ぎになりうると考えています。そのため、いまの歯止めで足りるかが論点です。',
+o11b="運営者を置かない方式（別の方向）", o11='運営者という立場を置かず、サイトの設計図だけを公開して、設置したい人がそれぞれ設置する方式も検討しています。サーバーの事業者に止められても別のサイトが残る一方で、異議の掲示や削除を誰が行うかが決まらなくなります。',
+more="詳しく読む",
 )
 
 L["zh-tw"] = dict(
@@ -186,8 +190,12 @@ o5b='由營運者一方提起的訴訟', o5='被批評的一方不提告，訴�
 o6b='提出異議者的身分確認', o6='如何確認提出異議的人是否為被批評的本人，尚未決定。如果沒有身分確認，他人就可以冒用本人名義要求刪除文章。',
 o7b='受理文章、異議與付款的實作方式', o7='必須處理投稿者的個人資料與付款資訊，以及提出異議者的身分確認資訊。因此，筆者正在研究，能否做到即使處理個人資料，網站本身也不加以保存。',
 o8b="伺服器與網域的設置地點", o8='問題在於，為了避免文章因伺服器或網域業者的介入而受損，是否應該使用海外的業者。使用海外的業者，比較容易避免因國內業者的判斷而被刪除。但是，海外的業者在收到侵權通知（刪除的要求）後如果放任文章不處理，業者自己也會被追究責任。因此，海外的業者收到通知後也可能刪除文章。也就是說，即使放在海外，也無法完全避免被刪除。',
-foot1=f'筆者 <a href="{XME}">hogehogejptweet</a>　第一版（2026年11月25日）　原文為日文',
+foot1=f'筆者 <a href="{XME}">hogehogejptweet</a>　第二版（2026年11月27日）　原文為日文',
 foot2="本頁內容仍在構想階段。有關法律的敘述未經律師確認。",
+o9b="「公益」與「公益目的」的定義", o9='構想中的網站刊登以公益為目的的查證與批評。但是，「公益」與「公益目的」所指為何，目前尚未定義。沒有定義，投稿者與被批評的一方都無法事先判斷哪些文章可以刊登。',
+o10b="避免過度攻擊與私刑的機制", o10='刊登批評的場所，也可能成為對特定人士過度攻擊或網路私刑的工具。筆者認為，即使對象確實有不當行為，將其刊登在網路上本身也可能過當。因此，問題在於目前的機制是否足夠。',
+o11b="不設營運者的方式（另一個方向）", o11='筆者也在考慮不設營運者，只公開網站的設計圖，由想設置的人各自設置的方式。這樣即使伺服器業者中止服務，其他網站仍會留存；但另一方面，由誰刊登異議、由誰刪除，將無法確定。',
+more="詳細內容（日文）",
 )
 
 L["ko"] = dict(
@@ -275,8 +283,12 @@ o5b='운영자 쪽에서 내는 소송', o5='비판받는 쪽이 소송을 내�
 o6b='이의를 내는 사람의 본인 확인', o6='이의를 낸 사람이 비판받는 쪽 본인인지를 어떻게 확인할지가 정해지지 않았습니다. 본인 확인이 없으면 다른 사람이 본인을 사칭해 글의 삭제를 요구할 수 있게 됩니다.',
 o7b='글·이의 접수와 결제의 구현 방식', o7='투고자의 개인정보와 결제 정보, 나아가 이의를 내는 사람의 본인 확인 정보를 다뤄야 합니다. 그래서 개인정보를 다루더라도 사이트 자체에는 보관하지 않는 구조로 할 수 없을지 검토하고 있습니다.',
 o8b="서버와 도메인을 두는 곳", o8='서버나 도메인 사업자의 개입으로 글이 훼손되지 않도록 해외 사업자를 써야 하는지가 논점입니다. 해외 사업자를 쓰면 국내 사업자의 판단에 따른 삭제는 피하기 쉬워집니다. 그러나 해외 사업자도 권리 침해 통지(삭제 요구)를 받은 뒤 글을 방치하면 사업자 자신이 책임을 추궁당합니다. 그래서 해외 사업자도 통지를 받으면 글을 삭제할 수 있습니다. 즉, 해외에 두더라도 삭제를 완전히 피할 수는 없습니다.',
-foot1=f'필자 <a href="{XME}">hogehogejptweet</a>　제1판(2026년 11월 25일)　원문은 일본어',
+foot1=f'필자 <a href="{XME}">hogehogejptweet</a>　제2판(2026년 11월 27일)　원문은 일본어',
 foot2="이 페이지는 구상 단계의 내용입니다. 법률에 관한 기술은 변호사의 확인을 받지 않았습니다.",
+o9b="‘공익’과 ‘공익 목적’의 정의", o9='구상 중인 사이트는 공익 목적의 검증과 비판을 싣습니다. 그러나 ‘공익’과 ‘공익 목적’이 무엇을 가리키는지는 아직 정의하지 않았습니다. 정의가 없으면 어떤 글을 실어도 되는지를 투고자도 비판받는 쪽도 미리 판단할 수 없습니다.',
+o10b="과도한 공격이나 사적 제재가 되지 않게 하는 장치", o10='비판을 싣는 곳은 특정인에 대한 과도한 공격이나 인터넷상의 사적 제재의 도구가 될 수도 있습니다. 필자는 문제가 있는 행위를 한 사람에 대한 것이라도, 그것을 인터넷에 올리는 것 자체가 지나칠 수 있다고 생각합니다. 그래서 지금의 장치로 충분한지가 논점입니다.',
+o11b="운영자를 두지 않는 방식(다른 방향)", o11='운영자라는 입장을 두지 않고 사이트의 설계도만 공개하여, 설치하고 싶은 사람이 각자 설치하는 방식도 검토하고 있습니다. 서버 사업자가 접속을 막아도 다른 사이트가 남는 한편, 이의의 게시나 삭제를 누가 할지가 정해지지 않게 됩니다.',
+more="자세히 보기(일본어)",
 )
 
 L["de"] = dict(
@@ -364,6 +376,10 @@ o5b='Klagen vonseiten des Betreibers', o5='Solange die kritisierte Seite nicht k
 o6b='Identitätsprüfung bei Widersprüchen', o6='Offen ist, wie geprüft wird, ob ein Widerspruch wirklich von der kritisierten Seite stammt. Ohne Prüfung könnte jemand unter fremdem Namen die Löschung eines Artikels verlangen.',
 o7b='Technische Umsetzung von Artikel-Annahme, Widerspruch und Zahlung', o7='Verarbeitet werden müssen persönliche Daten und Zahlungsdaten der Autoren sowie Daten zur Identitätsprüfung der Widersprechenden. Der Verfasser prüft deshalb, ob die Website solche Daten verarbeiten kann, ohne sie selbst zu speichern.',
 o8b="Standort von Server und Domain", o8='Offen ist, ob ein Anbieter im Ausland genutzt werden soll, damit Artikel nicht durch Eingriffe eines Server- oder Domain-Anbieters verloren gehen. Mit einem ausländischen Anbieter lassen sich Löschungen durch inländische Anbieter leichter vermeiden. Auch ein ausländischer Anbieter haftet jedoch selbst, wenn er nach einem Hinweis auf eine Rechtsverletzung (einer Forderung nach Löschung) untätig bleibt. Deshalb löscht auch er unter Umständen nach einem Hinweis. Eine Löschung lässt sich im Ausland also nicht völlig ausschließen.',
-foot1=f'Verfasser: <a href="{XME}">hogehogejptweet</a>, erste Fassung (25. November 2026), Original auf Japanisch',
+foot1=f'Verfasser: <a href="{XME}">hogehogejptweet</a>, zweite Fassung (27. November 2026), Original auf Japanisch',
 foot2="Diese Seite beschreibt einen Entwurf. Die rechtlichen Aussagen wurden nicht von einem Anwalt geprüft.",
+o9b="Definition von „öffentlichem Interesse“", o9='Die geplante Website veröffentlicht Prüfungen und Kritik im öffentlichen Interesse. Was „öffentliches Interesse“ und „Zweck im öffentlichen Interesse“ bedeuten, ist aber noch nicht definiert. Ohne Definition können weder Autoren noch die kritisierte Seite vorab beurteilen, welche Artikel veröffentlicht werden dürfen.',
+o10b="Schutz vor überzogenen Angriffen und Selbstjustiz", o10='Ein Ort für Kritik kann auch zum Werkzeug für überzogene Angriffe auf einzelne Personen oder für Selbstjustiz im Netz werden. Der Verfasser meint, dass schon die Veröffentlichung im Netz zu weit gehen kann, selbst wenn jemand tatsächlich etwas Falsches getan hat. Offen ist deshalb, ob die bisherigen Schutzregeln ausreichen.',
+o11b="Betrieb ohne Betreiber (andere Richtung)", o11='Geprüft wird auch ein Modell ohne Betreiber: Nur der Bauplan der Website wird veröffentlicht, und wer möchte, richtet selbst eine Website ein. Sperrt ein Hosting-Anbieter den Zugang, bleiben andere Websites bestehen. Offen wäre dann aber, wer Widersprüche veröffentlicht und wer löscht.',
+more="Details (Japanisch)",
 )
