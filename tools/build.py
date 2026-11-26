@@ -4,7 +4,7 @@
 """
 import html as htmllib, pathlib, re, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-from strings import L, ORDER, NAMES
+from strings import L, ORDER, NAMES, FLAGS
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 TPL = (ROOT / "tools" / "template.html").read_text(encoding="utf-8")
@@ -14,6 +14,7 @@ for lang in ORDER:
     d = dict(L[lang])
     up = "" if lang == "ja" else "../"
     d["up"] = up
+    d["flag"] = FLAGS[lang]
     d["lang"] = {"ja": "ja", "zh-tw": "zh-Hant-TW", "ko": "ko", "de": "de"}[lang]
     d["xlang"] = {"ja": "ja", "zh-tw": "zh-tw", "ko": "ko", "de": "de"}[lang]
     d["options"] = "".join(

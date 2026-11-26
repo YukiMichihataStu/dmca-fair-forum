@@ -24,11 +24,17 @@ body{margin:0;background:var(--paper);color:var(--ink);
   font-size:17px;line-height:1.9;letter-spacing:.02em}
 .topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
 .topbar>div{max-width:640px;margin:0 auto;padding:0 20px;height:40px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;line-height:1}
-.topbar select{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;max-width:7.5em;cursor:pointer}
+/* 言語の切り替えは、閉じた状態では国旗と lang を見せ、透明な select を上に重ねる。
+   日本語が読めない人にも用途が伝わるようにするため */
+.topbar .langsel{position:relative;display:inline-flex;align-items:center;height:32px;color:var(--sub);white-space:nowrap}
+.topbar .langsel::after{content:"";margin-left:6px;border:4px solid transparent;border-top-color:currentColor;border-bottom:0}
+.topbar .langsel select{position:absolute;inset:0;width:100%;font-size:16px;opacity:0;cursor:pointer}
+.topbar .langsel:focus-within{outline:2px solid var(--green);outline-offset:2px}
 .topbar .acts{display:flex;align-items:center;gap:16px;white-space:nowrap}
 .topbar a{color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:4px}
-.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-decoration-color:#b5b5b5;text-underline-offset:4px}
-.topbar a:focus-visible,.topbar button:focus-visible,.topbar select:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.topbar button{font:inherit;color:var(--sub);background:transparent;border:0;min-width:32px;height:32px;padding:0;cursor:pointer;white-space:nowrap}
+.topbar .icon{font-size:18px}
+.topbar a:focus-visible,.topbar button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 h2,h3{scroll-margin-top:56px}
 .wrap{max-width:640px;margin:0 auto;padding:48px 20px 96px}
 h1{font-size:30px;line-height:1.5;font-weight:700;margin:0 0 20px;letter-spacing:.01em}
@@ -119,10 +125,13 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
   <symbol id="person" viewBox="0 0 40 40"><circle cx="20" cy="13" r="7"/><path d="M6 38c0-10 6-15 14-15s14 5 14 15z"/></symbol>
 </svg>
 <header class="topbar"><div>
-  <select id="lang" aria-label="語言"><option value=".././">日本語</option><option value="../zh-tw/" selected>繁體中文</option><option value="../ko/">한국어</option><option value="../de/">Deutsch</option></select>
+  <span class="langsel">
+    <span aria-hidden="true">🇹🇼 lang</span>
+    <select id="lang" aria-label="語言"><option value=".././">日本語</option><option value="../zh-tw/" selected>繁體中文</option><option value="../ko/">한국어</option><option value="../de/">Deutsch</option></select>
+  </span>
   <span class="acts">
     <a href="https://github.com/YukiMichihataStu/dmca-fair-forum/issues">意見請寫在Issue</a>
-    <button type="button" id="share" data-done="已複製連結">分享</button>
+    <button type="button" id="share" class="icon" aria-label="分享" title="分享" data-done="已複製連結">📤</button>
   </span>
 </div></header>
 
@@ -136,7 +145,7 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
   </ul>
 
   <h2 id="now">對堀大輔的批評遭漠視｜證據遭刪除</h2>
-  <p>對堀大輔先生的批評，越來越難傳到讀者眼前。首先，在YouTube直播中，<mark>批評堀先生的留言遭到刪除</mark>。此外，在X上，<mark>附有影片的貼文，在X公司收到刪除請求後遭到刪除</mark>。被刪除貼文中的影片，是前學員等人提供的影片（並非課程本身的內容），或YouTube直播的剪輯。</p>
+  <p>對堀大輔先生的批評，不斷以DMCA為依據遭到刪除。在X上，<mark>附有影片的貼文，在X公司收到刪除請求後遭到刪除</mark>。被刪除貼文中的影片，是前學員等人提供的影片（並非課程本身的內容），或YouTube直播的剪輯。此外，在YouTube直播中，<mark>批評堀先生的留言遭到刪除</mark>。</p>
   <p class="view">筆者認為，X上的這類刪除，是利用DMCA（美國的著作權法）消除正當批評的行為。</p>
   <div class="xpost"><blockquote class="twitter-tweet" data-lang="zh-tw" data-dnt="true"><p class="xlink"><a href="https://x.com/taugu7711/status/2124442262360735834">查看X上的貼文（@taugu7711）</a></p></blockquote></div>
   <p>補充說明：堀大輔先生公開表示自己「每天只睡30分鐘」，並以一般社團法人日本短眠者培育協會（日本ショートスリーパー育成協会）代表理事的身分，提供收費的睡眠改善課程。自2026年8月起，社群媒體上質疑堀先生主張的聲音逐漸擴大。之後，該協會於2026年9月30日解散，堀先生並於11月3日宣布退出睡眠事業。另外，堀先生YouTube頻道的影片上，標有由堀先生擔任代表的GAHAKU股份有限公司（GAHAKU CO., LTD.）的著作權聲明。</p>
@@ -346,14 +355,28 @@ footer{margin-top:88px;padding-top:24px;border-top:1px solid var(--line);font-si
 <script>
 (function(){
   var sel=document.getElementById('lang');
-  if(sel)sel.addEventListener('change',function(){location.href=sel.value;});
+  if(sel){
+    var current=sel.querySelector('option[selected]').value;
+    sel.addEventListener('change',function(){location.href=sel.value;});
+    // 「戻る」で復元されると選んだ言語が残り、同じ言語を選び直せないので元に戻す
+    window.addEventListener('pageshow',function(){sel.value=current;});
+  }
   var b=document.getElementById('share');
   if(!b)return;
-  var label=b.textContent;
+  var label=b.textContent,name=b.getAttribute('aria-label'),timer;
   b.addEventListener('click',function(){
     var url=location.href.split('#')[0];
     if(navigator.share){navigator.share({title:document.title,url:url}).catch(function(){});return;}
-    function done(){b.textContent=b.getAttribute('data-done');setTimeout(function(){b.textContent=label;},1800);}
+    function show(text,hint,icon){
+      b.textContent=text;b.classList.toggle('icon',icon);
+      b.setAttribute('aria-label',hint);b.title=hint;
+    }
+    function done(){
+      var copied=b.getAttribute('data-done');
+      show(copied,copied,false);
+      clearTimeout(timer);
+      timer=setTimeout(function(){show(label,name,true);},1800);
+    }
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,function(){});}
   });
 })();
